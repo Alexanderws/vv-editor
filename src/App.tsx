@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import styled from "styled-components";
+
+import { ServicesContextProvider } from "./contexts/services.context";
+
+import Header from "./components/header.component";
+import StartPage from "./pages/start.component";
+import EditServicePage from "./pages/edit-service.component";
+import ServiceRankingPage from "./pages/service-ranking.component";
+
+const MainContainer = styled.div`
+  padding: 40px 60px;
+  background-color: #e3e3e3;
+  min-height: 100vh;
+`;
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ServicesContextProvider>
+      <Header />
+      <MainContainer>
+        {" "}
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={props => <StartPage {...props} />}
+          />
+          <Route
+            exact
+            path="/edit-service"
+            render={props => <EditServicePage {...props} />}
+          />
+          <Route
+            exact
+            path="/service-ranking"
+            render={props => <ServiceRankingPage {...props} />}
+          />
+        </Switch>
+      </MainContainer>
+    </ServicesContextProvider>
   );
-}
+};
 
 export default App;

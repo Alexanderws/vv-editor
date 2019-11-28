@@ -1,0 +1,6 @@
+exports_files([
+    "OsloSans-Light.woff",
+    "OsloSans-Regular.woff",
+    "OsloSans-Medium.woff",
+    "fonts.css",
+])
