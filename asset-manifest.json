@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/vv-editor/static/css/main.702fed02.chunk.css",
+    "main.css": "/vv-editor/static/css/main.711718a0.chunk.css",
     "main.js": "/vv-editor/static/js/main.20083a5c.chunk.js",
     "main.js.map": "/vv-editor/static/js/main.20083a5c.chunk.js.map",
     "runtime-main.js": "/vv-editor/static/js/runtime-main.dbeaf663.js",
@@ -8,14 +8,14 @@
     "static/js/2.da4dc2d5.chunk.js": "/vv-editor/static/js/2.da4dc2d5.chunk.js",
     "static/js/2.da4dc2d5.chunk.js.map": "/vv-editor/static/js/2.da4dc2d5.chunk.js.map",
     "index.html": "/vv-editor/index.html",
-    "precache-manifest.8cbab08d55e5178b78743982c102852d.js": "/vv-editor/precache-manifest.8cbab08d55e5178b78743982c102852d.js",
+    "precache-manifest.88f4f1ce762f6c148b045b1af4fe5d86.js": "/vv-editor/precache-manifest.88f4f1ce762f6c148b045b1af4fe5d86.js",
     "service-worker.js": "/vv-editor/service-worker.js",
-    "static/css/main.702fed02.chunk.css.map": "/vv-editor/static/css/main.702fed02.chunk.css.map"
+    "static/css/main.711718a0.chunk.css.map": "/vv-editor/static/css/main.711718a0.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.dbeaf663.js",
     "static/js/2.da4dc2d5.chunk.js",
-    "static/css/main.702fed02.chunk.css",
+    "static/css/main.711718a0.chunk.css",
     "static/js/main.20083a5c.chunk.js"
   ]
 }
