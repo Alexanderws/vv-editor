@@ -19,7 +19,7 @@ const MainContainer = styled.div`
 `;
 
 const InnerContainer = styled.div`
-  min-width: 350px;
+  min-width: 340px;
   max-width: 1020px;
   margin: 0 auto;
   flex-grow: 1;

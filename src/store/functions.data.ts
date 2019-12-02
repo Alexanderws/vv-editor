@@ -10,7 +10,7 @@ export const FUNCTION = Object.freeze({
   hukommelse: "hukommelse"
 });
 
-export const functions = [
+export const functions: any[] = [
   {
     id: FUNCTION.bevege,
     text: "Jeg har problemer å bevege noen deler av kroppen"

@@ -8,6 +8,7 @@ import { AppContext } from "../contexts/app.context";
 import { ServicesContext } from "../contexts/services.context";
 import { Service, TREATMENT } from "../store/services.data";
 import { contexts } from "../store/contexts.data";
+import { functions } from "../store/functions.data";
 
 interface EditServiceProps extends RouteComponentProps {}
 
@@ -92,6 +93,34 @@ const TextArea = styled.textarea`
 `;
 
 const SegmentedButton = styled.input`
+  height: 40px;
+  line-height: 40px;
+  border: solid 1px black;
+  font-size: 1rem;
+  min-width: 0;
+  text-transform: capitalize;
+  background-color: white;
+  font-weight: 500;
+  cursor: pointer;
+  flex-grow: 1;
+  &:first-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-right: none;
+  }
+  &:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-left: none;
+  }
+
+  ${({ checked }) =>
+    checked ? "color: white; background-color: black;" : ""};
+`;
+
+const SegmentedButtonSmall = styled.input`
+  height: 28px;
+  line-height: 28px;
   border: solid 1px black;
   font-size: 1rem;
   min-width: 0;
@@ -315,7 +344,10 @@ const ObstacleForm = ({ form, setForm }: FormProps) => {
                   style={{ marginLeft: "4px" }}
                   key={context}
                 >
-                  {context}
+                  {
+                    contexts.find((conObj: any) => conObj.id === context)
+                      .text
+                  }
                 </ContextContainerSmall>
               );
             })}
@@ -342,9 +374,15 @@ const ObstacleForm = ({ form, setForm }: FormProps) => {
                 key={functionId}
                 style={{ alignItems: "baseline" }}
               >
-                <Label style={{ width: "70%" }}>{functionId}</Label>
+                <Label style={{ width: "70%" }}>
+                  {
+                    functions.find(
+                      (funcObj: any) => funcObj.id === functionId
+                    ).text
+                  }
+                </Label>
                 <RowContainer style={{ height: "27px", width: "30%" }}>
-                  <SegmentedButton
+                  <SegmentedButtonSmall
                     type="button"
                     name={functionId}
                     value="Ingen"
@@ -359,7 +397,7 @@ const ObstacleForm = ({ form, setForm }: FormProps) => {
                       )
                     }
                   />
-                  <SegmentedButton
+                  <SegmentedButtonSmall
                     type="button"
                     name={functionId}
                     value="Mild"
@@ -369,7 +407,7 @@ const ObstacleForm = ({ form, setForm }: FormProps) => {
                         funObj.name === functionId && funObj.score === 1
                     )}
                   />
-                  <SegmentedButton
+                  <SegmentedButtonSmall
                     type="button"
                     name={functionId}
                     value="Høy"

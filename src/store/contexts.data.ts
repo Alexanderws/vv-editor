@@ -15,7 +15,7 @@ export const CONTEXT = Object.freeze({
   personligStell: "personligStell"
 });
 
-export const contexts = [
+export const contexts: any[] = [
   {
     id: CONTEXT.kommeRundtHjemme,
     text: "Komme meg rundt i mitt eget hjem",

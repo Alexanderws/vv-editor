@@ -8,7 +8,7 @@ const HeaderContainer = styled.div`
   display: flex;
   justify-content: center;
   background-color: black;
-  padding: 30px 10px;
+  padding: 30px 10px 10px;
   position: relative;
 `;
 
