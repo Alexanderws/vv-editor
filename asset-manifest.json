@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/vv-editor/static/css/main.f9b7e834.chunk.css",
-    "main.js": "/vv-editor/static/js/main.1483b579.chunk.js",
-    "main.js.map": "/vv-editor/static/js/main.1483b579.chunk.js.map",
+    "main.css": "/vv-editor/static/css/main.026d456b.chunk.css",
+    "main.js": "/vv-editor/static/js/main.dca265d1.chunk.js",
+    "main.js.map": "/vv-editor/static/js/main.dca265d1.chunk.js.map",
     "runtime-main.js": "/vv-editor/static/js/runtime-main.dbeaf663.js",
     "runtime-main.js.map": "/vv-editor/static/js/runtime-main.dbeaf663.js.map",
-    "static/js/2.ae7a217b.chunk.js": "/vv-editor/static/js/2.ae7a217b.chunk.js",
-    "static/js/2.ae7a217b.chunk.js.map": "/vv-editor/static/js/2.ae7a217b.chunk.js.map",
+    "static/js/2.7e780ae4.chunk.js": "/vv-editor/static/js/2.7e780ae4.chunk.js",
+    "static/js/2.7e780ae4.chunk.js.map": "/vv-editor/static/js/2.7e780ae4.chunk.js.map",
     "index.html": "/vv-editor/index.html",
-    "precache-manifest.0a0b334d006cba037f093e97e7826894.js": "/vv-editor/precache-manifest.0a0b334d006cba037f093e97e7826894.js",
+    "precache-manifest.001774ff6358fb17f023110ac82110cd.js": "/vv-editor/precache-manifest.001774ff6358fb17f023110ac82110cd.js",
     "service-worker.js": "/vv-editor/service-worker.js",
-    "static/css/main.f9b7e834.chunk.css.map": "/vv-editor/static/css/main.f9b7e834.chunk.css.map",
+    "static/css/main.026d456b.chunk.css.map": "/vv-editor/static/css/main.026d456b.chunk.css.map",
     "static/media/fonts.css": "/vv-editor/static/media/OsloSans-RegularItalic.1b164fe0.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.dbeaf663.js",
-    "static/js/2.ae7a217b.chunk.js",
-    "static/css/main.f9b7e834.chunk.css",
-    "static/js/main.1483b579.chunk.js"
+    "static/js/2.7e780ae4.chunk.js",
+    "static/css/main.026d456b.chunk.css",
+    "static/js/main.dca265d1.chunk.js"
   ]
 }
