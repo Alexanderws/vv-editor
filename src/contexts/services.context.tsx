@@ -6,7 +6,7 @@ import {
 } from "../store/services.data";
 
 type ContextProps = {
-  services: Service[];
+  services: any[];
   isEditing: boolean;
   activeService: any;
   setActiveService: any;
@@ -16,7 +16,7 @@ type ContextProps = {
 };
 
 interface ServiceContextStateProps {
-  services: Service[];
+  services: any[];
   isEditing: boolean;
   activeService: Service | null;
 }
@@ -40,14 +40,15 @@ export const ServicesContextProvider = (props: any) => {
   });
 
   const setActiveService = (isEditing: boolean, serviceToEdit: any) => {
-    setState({
-      ...state,
+    const newService = isEditing ? serviceToEdit : null;
+    setState((prevState: any) => ({
+      ...prevState,
       isEditing: isEditing,
-      activeService: isEditing ? serviceToEdit : null
-    });
+      activeService: newService
+    }));
   };
 
-  const addService = (service: Service) => {
+  const addService = (service: any) => {
     setState((prevState: any) => ({
       ...prevState,
       services: [...prevState.services, service]
@@ -55,15 +56,15 @@ export const ServicesContextProvider = (props: any) => {
   };
 
   const updateService = (serviceToUpdate: any) => {
-    setState((prevState: any) => ({
-      ...prevState,
-      services: prevState.services.map((service: any) => {
+    setState({
+      ...state,
+      services: state.services.map((service: any) => {
         if (service.id === serviceToUpdate.id) {
           return serviceToUpdate;
         }
         return service;
       })
-    }));
+    });
   };
 
   const getRankedServices = (

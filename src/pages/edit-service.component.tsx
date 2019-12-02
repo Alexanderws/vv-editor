@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import ActionButton from "../components/action-button.component";
 
+import { AppContext } from "../contexts/app.context";
 import { ServicesContext } from "../contexts/services.context";
 import { Service, TREATMENT } from "../store/services.data";
 import { contexts } from "../store/contexts.data";
@@ -32,6 +33,7 @@ const Title = styled.h2`
   color: black;
   font-weight: 400;
   margin-bottom: 60px;
+  cursor: pointer;
 `;
 
 const Description = styled.span`
@@ -116,6 +118,8 @@ const SegmentedButton = styled.input`
 interface FormProps {
   form: any;
   setForm?: any;
+  setCurrentPage?: any;
+  addService?: any;
 }
 
 const OverviewForm = ({ form, setForm }: FormProps) => {
@@ -387,8 +391,10 @@ const ObstacleForm = ({ form, setForm }: FormProps) => {
 
 const EditServicePage = (props: EditServiceProps) => {
   const { history, location } = props;
+  const { setHasMadeChange } = useContext(AppContext);
   const {
     addService,
+    updateService,
     isEditing,
     activeService,
     setActiveService
@@ -412,24 +418,14 @@ const EditServicePage = (props: EditServiceProps) => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
-  const resetEditing = () => {
-    setActiveService(false, null);
-  };
-
   const validateForm = () => {
     let valid =
       form.name.length > 2 && form.contexts.length > 0 && form.treatment;
     return valid;
   };
 
-  const handlePreviousClicked = () => {
-    if (currentPage === 1) {
-      resetEditing();
-      history.push("/");
-    }
-    if (currentPage === 2) {
-      setCurrentPage(1);
-    }
+  const resetEditing = () => {
+    setActiveService(false, null);
   };
 
   const handleNextClicked = () => {
@@ -438,41 +434,61 @@ const EditServicePage = (props: EditServiceProps) => {
     }
     if (currentPage === 2) {
       if (validateForm()) {
-        const newService: Service = {
-          id: form.name,
-          ...form
-        };
-        addService(newService);
+        if (isEditing) {
+          updateService(form);
+          console.log("LOLOLOL");
+        } else {
+          const newService: Service = {
+            id: form.name,
+            ...form
+          };
+          addService(newService);
+        }
+        setHasMadeChange(true);
       }
       resetEditing();
       history.push("/");
     }
   };
 
+  const handlePreviousClicked = () => {
+    if (currentPage === 1) {
+      //resetEditing();
+      history.push("/");
+    }
+    if (currentPage === 2) {
+      setCurrentPage(1);
+    }
+  };
+
   return (
     <ColumnContainer>
       <Title onClick={() => history.goBack()}>
-        Tilbake til startsiden
+        Tilbake til startsiden       
       </Title>
       <Description>
         {form.name || isEditing
-          ? `Rediger tilbud: ${form.name}`
-          : "Opprett et nytt tilbud"}
+          ? `Rediger tilbud: ${form.name}`
+          : "Opprett et nytt tilbud"}
       </Description>
       <FormContainer>
         {currentPage === 1 ? (
-          <OverviewForm form={form} setForm={setForm} />
+          <OverviewForm
+            form={form}
+            setForm={setForm}
+            setCurrentPage={setCurrentPage}
+          />
         ) : (
           <ObstacleForm form={form} setForm={setForm} />
         )}
         <ButtonRow>
           <ActionButton secondary onClick={handlePreviousClicked}>
-            {currentPage === 1 ? "Avbryt" : "Gå til forrige steg"}
+            {currentPage === 1 ? "Avbryt" : "Gå til forrige steg"}
           </ActionButton>
           <ActionButton onClick={handleNextClicked}>
             {currentPage === 1
-              ? "Gå til neste steg"
-              : "Dette ser bra ut, lagre!"}
+              ? "Gå til neste steg"
+              : "Dette ser bra ut, lagre!"}
           </ActionButton>
         </ButtonRow>
       </FormContainer>

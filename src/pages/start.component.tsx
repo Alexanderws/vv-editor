@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import styled from "styled-components";
 
 import Card from "../components/card.component";
+
+import { AppContext } from "../contexts/app.context";
 
 interface StartProps extends RouteComponentProps {}
 
@@ -46,6 +48,7 @@ const CardDescription = styled.p`
 
 const StartPage = (props: StartProps) => {
   const { history, location } = props;
+  const { userName } = useContext(AppContext);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -54,7 +57,7 @@ const StartPage = (props: StartProps) => {
   return (
     <Container>
       <Title>Startsiden</Title>
-      <Description>Hei [Brukernavn].</Description>
+      <Description>Hei {userName}.</Description>
       <Description>Hva trenger du å gjøre i dag?</Description>
       <ButtonColumn>
         <Card
@@ -71,7 +74,7 @@ const StartPage = (props: StartProps) => {
         </Card>
         <Card
           onClick={() => {
-            history.push("services");
+            history.push("all-services");
           }}
         >
           <CardTitle>

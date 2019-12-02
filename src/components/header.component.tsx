@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 
+import { AppContext } from "../contexts/app.context";
+
 const HeaderContainer = styled.div`
-  height: 80px;
+  min-height: 80px;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  padding: 30px 10px;
+  position: relative;
+`;
+
+const InnerContainer = styled.div`
+  min-width: 350px;
+  max-width: 1020px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  background-color: black;
-  padding: 30px 60px;
-  position: relative;
+  flex-grow: 1;
 `;
 
 const Title = styled.h1`
@@ -24,10 +35,13 @@ const UserInfo = styled.span`
 `;
 
 const Header = () => {
+  const { userName } = useContext(AppContext);
   return (
     <HeaderContainer>
-      <Title>Innholdsforvaltning av Veiviser 60+</Title>
-      <UserInfo>[Brukernavn om innlogget]</UserInfo>
+      <InnerContainer>
+        <Title>Innholdsforvaltning av Veiviser 60+</Title>
+        <UserInfo>Logget inn som {userName}</UserInfo>
+      </InnerContainer>
     </HeaderContainer>
   );
 };
