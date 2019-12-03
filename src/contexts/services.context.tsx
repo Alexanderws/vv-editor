@@ -56,15 +56,15 @@ export const ServicesContextProvider = (props: any) => {
   };
 
   const updateService = (serviceToUpdate: any) => {
-    setState({
-      ...state,
-      services: state.services.map((service: any) => {
+    setState((prevState: any) => ({
+      ...prevState,
+      services: prevState.services.map((service: any) => {
         if (service.id === serviceToUpdate.id) {
           return serviceToUpdate;
         }
         return service;
       })
-    });
+    }));
   };
 
   const getRankedServices = (

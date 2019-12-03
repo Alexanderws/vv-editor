@@ -270,14 +270,14 @@ const OverviewForm = ({
             checked={form.treatment === TREATMENT.forebyggende}
             onClick={handleInputChange}
           />
-          {formErrors.treatment ? (
-            <ErrorMessage>
-              Du må angi hva slags type behandling tilbudet gir
-            </ErrorMessage>
-          ) : (
-            ""
-          )}
         </RowContainer>
+        {formErrors.treatment ? (
+          <ErrorMessage>
+            Du må angi hva slags type behandling tilbudet gir
+          </ErrorMessage>
+        ) : (
+          ""
+        )}
       </FormGroup>
       <FormGroup>
         <Label htmlFor="contexts">
@@ -527,12 +527,11 @@ const EditServicePage = (props: EditServiceProps) => {
   const validateForm = () => {
     setFormErrors({
       name: form.name ? false : true,
-      description: form.description ? false : true,
       treatment: form.treatment ? false : true,
-      moreInformationURL: form.moreInformationURL ? false : true,
-      contexts: form.contexts ? false : true
+      contexts: form.contexts.length ? false : true
     });
-    return !Object.values(formErrors).includes(true);
+
+    return form.name && form.treatment && form.contexts.length;
   };
 
   const resetEditing = () => {
