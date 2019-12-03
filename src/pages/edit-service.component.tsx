@@ -65,7 +65,7 @@ const ContextContainer = styled.div`
 
 const Label = styled.label`
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 4px;
 `;
 
@@ -397,8 +397,14 @@ const ObstacleForm = ({
     <React.Fragment>
       <FormGroup>
         <RowContainer>
-          <span style={{ padding: "4px 0", whiteSpace: "nowrap" }}>
-            <Label>Valgte mål:</Label>
+          <span
+            style={{
+              fontWeight: 500,
+              padding: "4px 0",
+              whiteSpace: "nowrap"
+            }}
+          >
+            Valgte mål:
           </span>
           <RowContainer style={{ flexWrap: "wrap" }}>
             {form.contexts.map((context: any) => {
@@ -416,10 +422,8 @@ const ObstacleForm = ({
       </FormGroup>
       <FormGroup>
         <Label>
-          Sett i forhold til målene som er valgt, hvor relevant er
-          tilbudet{" "}
-          <span style={{ fontStyle: "italic" }}>{form.name}</span> for
-          disse hindringene?
+          Sett i forhold til målene som er valgt, hvor relevante er disse
+          hindringene for tilbudet?
         </Label>
       </FormGroup>
       <FormGroup>
@@ -434,13 +438,19 @@ const ObstacleForm = ({
                 key={functionId}
                 style={{ alignItems: "baseline" }}
               >
-                <Label style={{ width: "70%" }}>
+                <span
+                  style={{
+                    width: "70%",
+                    fontWeight: 400,
+                    marginBottom: "4px"
+                  }}
+                >
                   {
                     functions.find(
                       (funcObj: any) => funcObj.id === functionId
                     ).text
                   }
-                </Label>
+                </span>
                 <RowContainer style={{ height: "27px", width: "30%" }}>
                   <SegmentedButtonSmall
                     type="button"
