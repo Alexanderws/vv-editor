@@ -92,6 +92,16 @@ const TextArea = styled.textarea`
   resize: none;
 `;
 
+const ErrorMessage = styled.div`
+  margin-top: 4px;
+  background-color: #ff8274;
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: white;
+  border-radius: 3px;
+  padding: 8px 8px 6px;
+`;
+
 const SegmentedButton = styled.input`
   height: 40px;
   line-height: 40px;
@@ -147,11 +157,18 @@ const SegmentedButtonSmall = styled.input`
 interface FormProps {
   form: any;
   setForm?: any;
+  formErrors: any;
+  setFormErrors: any;
   setCurrentPage?: any;
   addService?: any;
 }
 
-const OverviewForm = ({ form, setForm }: FormProps) => {
+const OverviewForm = ({
+  form,
+  setForm,
+  formErrors,
+  setFormErrors
+}: FormProps) => {
   const handleContextChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -193,6 +210,11 @@ const OverviewForm = ({ form, setForm }: FormProps) => {
           value={form.name}
           onChange={handleInputChange}
         />
+        {formErrors.name ? (
+          <ErrorMessage>Du må angi et navn på tilbudet</ErrorMessage>
+        ) : (
+          ""
+        )}
       </FormGroup>
       <FormGroup>
         <Label htmlFor="description">Beskrivelse</Label>
@@ -202,6 +224,13 @@ const OverviewForm = ({ form, setForm }: FormProps) => {
           onChange={handleInputChange}
           maxLength={400}
         />
+        {formErrors.description ? (
+          <ErrorMessage>
+            Du må angi en beskrivelse for tilbudet
+          </ErrorMessage>
+        ) : (
+          ""
+        )}
       </FormGroup>
       <FormGroup>
         <Label htmlFor="moreInformationURL">URL/lenke til nettsted</Label>
@@ -211,6 +240,11 @@ const OverviewForm = ({ form, setForm }: FormProps) => {
           value={form.moreInformationURL}
           onChange={handleInputChange}
         />
+        {formErrors.moreInformationURL ? (
+          <ErrorMessage>Du må angi en lenke for tilbudet</ErrorMessage>
+        ) : (
+          ""
+        )}
       </FormGroup>
       <FormGroup>
         <Label htmlFor="treatment">Tilbudet er primært</Label>
@@ -236,6 +270,13 @@ const OverviewForm = ({ form, setForm }: FormProps) => {
             checked={form.treatment === TREATMENT.forebyggende}
             onClick={handleInputChange}
           />
+          {formErrors.treatment ? (
+            <ErrorMessage>
+              Du må angi hva slags type behandling tilbudet gir
+            </ErrorMessage>
+          ) : (
+            ""
+          )}
         </RowContainer>
       </FormGroup>
       <FormGroup>
@@ -250,7 +291,7 @@ const OverviewForm = ({ form, setForm }: FormProps) => {
                 style={{
                   display: "flex",
                   maxWidth: "320px",
-                  marginBottom: "4px"
+                  marginBottom: "8px"
                 }}
               >
                 <input
@@ -259,23 +300,45 @@ const OverviewForm = ({ form, setForm }: FormProps) => {
                   value={context.id}
                   checked={form.contexts.includes(context.id)}
                   onChange={handleContextChange}
+                  style={{ marginRight: "4px" }}
                 />
                 {context.text}
               </label>
             );
           })}
         </ContextContainer>
+        {formErrors.contexts ? (
+          <ErrorMessage>
+            Du må angi minst et mål som er relevant for tilbudet
+          </ErrorMessage>
+        ) : (
+          ""
+        )}
       </FormGroup>
     </React.Fragment>
   );
 };
 
-const ObstacleForm = ({ form, setForm }: FormProps) => {
+const ObstacleForm = ({
+  form,
+  setForm,
+  formErrors,
+  setFormErrors
+}: FormProps) => {
   const ContextContainerSmall = styled.div`
     padding: 4px;
     display: flex;
     background-color: #f1f1f1;
     font-style: italic;
+    font-weight: 500;
+    margin-bottom: 4px;
+    margin-left: 4px;
+  `;
+
+  const FunctionContainer = styled.div`
+    padding: 4px;
+    display: flex;
+    background-color: #f1f1f1;
     font-weight: 500;
     margin-bottom: 4px;
   `;
@@ -340,10 +403,7 @@ const ObstacleForm = ({ form, setForm }: FormProps) => {
           <RowContainer style={{ flexWrap: "wrap" }}>
             {form.contexts.map((context: any) => {
               return (
-                <ContextContainerSmall
-                  style={{ marginLeft: "4px" }}
-                  key={context}
-                >
+                <ContextContainerSmall key={context}>
                   {
                     contexts.find((conObj: any) => conObj.id === context)
                       .text
@@ -370,7 +430,7 @@ const ObstacleForm = ({ form, setForm }: FormProps) => {
         <ColumnContainer>
           {relevantFunctions.map((functionId: string) => {
             return (
-              <ContextContainerSmall
+              <FunctionContainer
                 key={functionId}
                 style={{ alignItems: "baseline" }}
               >
@@ -418,7 +478,7 @@ const ObstacleForm = ({ form, setForm }: FormProps) => {
                     )}
                   />
                 </RowContainer>
-              </ContextContainerSmall>
+              </FunctionContainer>
             );
           })}
         </ColumnContainer>
@@ -437,6 +497,14 @@ const EditServicePage = (props: EditServiceProps) => {
     activeService,
     setActiveService
   } = useContext(ServicesContext);
+  const [formErrors, setFormErrors] = useState<any>({
+    name: false,
+    description: false,
+    treatment: false,
+    moreInformationURL: false,
+    contexts: false,
+    functions: false
+  });
   const [form, setForm] = useState<Service>(
     isEditing
       ? activeService
@@ -457,9 +525,14 @@ const EditServicePage = (props: EditServiceProps) => {
   }, [location.pathname]);
 
   const validateForm = () => {
-    let valid =
-      form.name.length > 2 && form.contexts.length > 0 && form.treatment;
-    return valid;
+    setFormErrors({
+      name: form.name ? false : true,
+      description: form.description ? false : true,
+      treatment: form.treatment ? false : true,
+      moreInformationURL: form.moreInformationURL ? false : true,
+      contexts: form.contexts ? false : true
+    });
+    return !Object.values(formErrors).includes(true);
   };
 
   const resetEditing = () => {
@@ -468,7 +541,9 @@ const EditServicePage = (props: EditServiceProps) => {
 
   const handleNextClicked = () => {
     if (currentPage === 1) {
-      setCurrentPage(2);
+      if (validateForm()) {
+        setCurrentPage(2);
+      }
     }
     if (currentPage === 2) {
       if (validateForm()) {
@@ -513,11 +588,18 @@ const EditServicePage = (props: EditServiceProps) => {
         {currentPage === 1 ? (
           <OverviewForm
             form={form}
+            formErrors={formErrors}
             setForm={setForm}
+            setFormErrors={setFormErrors}
             setCurrentPage={setCurrentPage}
           />
         ) : (
-          <ObstacleForm form={form} setForm={setForm} />
+          <ObstacleForm
+            form={form}
+            setForm={setForm}
+            formErrors={formErrors}
+            setFormErrors={setFormErrors}
+          />
         )}
         <ButtonRow>
           <ActionButton secondary onClick={handlePreviousClicked}>

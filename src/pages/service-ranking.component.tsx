@@ -45,6 +45,12 @@ const RowContainer = styled.div`
   flex-direction: row;
 `;
 
+const InputContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 8px;
+`;
+
 const Title = styled.h2`
   font-size: 1.375rem;
   color: black;
@@ -124,8 +130,16 @@ const ServiceRankingPage = (props: ServiceRankingProps) => {
       <React.Fragment>
         {contexts.map((goal: any) => {
           return (
-            <label key={goal.id}>
+            <label
+              key={goal.id}
+              style={{
+                display: "flex",
+                maxWidth: "320px",
+                marginBottom: "8px"
+              }}
+            >
               <input
+                style={{ marginRight: "4px" }}
                 type="radio"
                 name={goal.text}
                 value={goal.id}
@@ -145,8 +159,16 @@ const ServiceRankingPage = (props: ServiceRankingProps) => {
       <React.Fragment>
         {functions.map((obstacle: any) => {
           return (
-            <label key={obstacle.id}>
+            <label
+              key={obstacle.id}
+              style={{
+                display: "flex",
+                maxWidth: "320px",
+                marginBottom: "8px"
+              }}
+            >
               <input
+                style={{ marginRight: "4px" }}
                 type="checkbox"
                 name={obstacle.text}
                 value={obstacle.id}
@@ -187,10 +209,6 @@ const ServiceRankingPage = (props: ServiceRankingProps) => {
               <span>
                 <span style={{ fontWeight: 500 }}>Type:</span>{" "}
                 {service.treatment}
-              </span>
-              <span>
-                <span style={{ fontWeight: 500 }}>Score:</span>{" "}
-                {service.score}
               </span>
             </div>
             <RowContainer style={{ justifyContent: "flex-end" }}>
