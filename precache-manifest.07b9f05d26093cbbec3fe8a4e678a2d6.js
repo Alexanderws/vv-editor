@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7842ac71a8b48897b5644aa2b8e92ba3",
+    "revision": "e8033f7de74d2b249d11ba60d77a3be7",
     "url": "/vv-editor/index.html"
   },
   {
-    "revision": "07c5c5ac77e50c05d7fe",
+    "revision": "94bcbae79357324b977a",
     "url": "/vv-editor/static/css/main.026d456b.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/vv-editor/static/js/2.2405cb7d.chunk.js"
   },
   {
-    "revision": "07c5c5ac77e50c05d7fe",
-    "url": "/vv-editor/static/js/main.a9e2f4cc.chunk.js"
+    "revision": "94bcbae79357324b977a",
+    "url": "/vv-editor/static/js/main.881984a9.chunk.js"
   },
   {
     "revision": "530f814c1287252d1805",
