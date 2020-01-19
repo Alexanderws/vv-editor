@@ -51,7 +51,7 @@ const FormContainer = styled.div`
   max-width: 700px;
 `;
 
-const ContextContainer = styled.div`
+const ContextContainerOld = styled.div`
   padding: 10px 5px;
   max-height: 210px;
   width: 100%;
@@ -61,6 +61,14 @@ const ContextContainer = styled.div`
   flex-flow: column wrap;
   align-content: stretch;
   background-color: #f1f1f1;
+`;
+
+const ContextContainer = styled.div`
+  padding: 4px;
+  display: flex;
+  background-color: #f1f1f1;
+  font-weight: 500;
+  margin-bottom: 4px;
 `;
 
 const Label = styled.label`
@@ -124,8 +132,8 @@ const SegmentedButton = styled.input`
     border-left: none;
   }
 
-  ${({ checked }) =>
-    checked ? "color: white; background-color: black;" : ""};
+  ${({ defaultChecked }) =>
+    defaultChecked ? "color: white; background-color: black;" : ""};
 `;
 
 const SegmentedButtonSmall = styled.input`
@@ -150,8 +158,8 @@ const SegmentedButtonSmall = styled.input`
     border-left: none;
   }
 
-  ${({ checked }) =>
-    checked ? "color: white; background-color: black;" : ""};
+  ${({ defaultChecked }) =>
+    defaultChecked ? "color: white; background-color: black;" : ""};
 `;
 
 interface FormProps {
@@ -185,6 +193,49 @@ const OverviewForm = ({
         ...form,
         contexts: [...form.contexts, value]
       });
+    }
+  };
+
+  const handleContextClick = (
+    e: React.MouseEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const target = e.currentTarget;
+    const newScore =
+      target.value === "Høy" ? 2 : target.value === "Medium" ? 1 : 0;
+
+    const targetName = target.name;
+    const exists = form.contexts.some(
+      (conObj: any) => conObj.name === targetName
+    );
+    if (newScore === 0) {
+      if (exists) {
+        setForm({
+          ...form,
+          contexts: form.contexts.filter(
+            (conObj: any) => conObj.name !== targetName
+          )
+        });
+      } // else do nothing
+    } else {
+      if (exists) {
+        setForm({
+          ...form,
+          contexts: form.contexts.map((conObj: any) => {
+            if (conObj.name === targetName) {
+              return { name: conObj.name, score: newScore };
+            }
+            return conObj;
+          })
+        });
+      } else {
+        setForm({
+          ...form,
+          contexts: [
+            ...form.contexts,
+            { name: targetName, score: newScore }
+          ]
+        });
+      }
     }
   };
 
@@ -253,21 +304,21 @@ const OverviewForm = ({
             value={TREATMENT.kompenserende}
             type="button"
             name="treatment"
-            checked={form.treatment === TREATMENT.kompenserende}
+            defaultChecked={form.treatment === TREATMENT.kompenserende}
             onClick={handleInputChange}
           />
           <SegmentedButton
             value={TREATMENT.behandlende}
             type="button"
             name="treatment"
-            checked={form.treatment === TREATMENT.behandlende}
+            defaultChecked={form.treatment === TREATMENT.behandlende}
             onClick={handleInputChange}
           />
           <SegmentedButton
             value={TREATMENT.forebyggende}
             type="button"
             name="treatment"
-            checked={form.treatment === TREATMENT.forebyggende}
+            defaultChecked={form.treatment === TREATMENT.forebyggende}
             onClick={handleInputChange}
           />
         </RowContainer>
@@ -280,33 +331,104 @@ const OverviewForm = ({
         )}
       </FormGroup>
       <FormGroup>
-        <Label htmlFor="contexts">
+        <RowContainer>
+          <Label style={{ width: "70%" }}>Mål</Label>
+          <Label style={{ width: "30%" }}>Relevans</Label>
+        </RowContainer>
+        <ColumnContainer>
+          {contexts.map((context: any) => {
+            return (
+              <ContextContainer
+                key={context.id}
+                style={{ alignItems: "baseline" }}
+              >
+                <span
+                  style={{
+                    width: "70%",
+                    fontWeight: 400,
+                    marginBottom: "4px"
+                  }}
+                >
+                  {context.text}
+                </span>
+                <RowContainer style={{ height: "27px", width: "30%" }}>
+                  <SegmentedButtonSmall
+                    type="button"
+                    name={context.id}
+                    value="Ingen"
+                    onClick={handleContextClick}
+                    defaultChecked={
+                      form.contexts.some(
+                        (conObj: any) =>
+                          conObj.name === context.id && conObj.score === 0
+                      ) ||
+                      !form.contexts.some(
+                        (conObj: any) => conObj.name === context.id
+                      )
+                    }
+                  />
+                  <SegmentedButtonSmall
+                    type="button"
+                    name={context.id}
+                    value="Medium"
+                    onClick={handleContextClick}
+                    defaultChecked={form.contexts.some(
+                      (conObj: any) =>
+                        conObj.name === context.id && conObj.score === 1
+                    )}
+                  />
+                  <SegmentedButtonSmall
+                    type="button"
+                    name={context.id}
+                    value="Høy"
+                    onClick={handleContextClick}
+                    defaultChecked={form.contexts.some(
+                      (conObj: any) =>
+                        conObj.name === context.id && conObj.score === 2
+                    )}
+                  />
+                </RowContainer>
+              </ContextContainer>
+            );
+          })}
+        </ColumnContainer>
+
+        {/* <Label htmlFor="contexts">
           Tilbudet er relevant for følgende mål
         </Label>
         <ContextContainer>
           {contexts.map((context: any) => {
             return (
-              <label
-                key={context.id}
-                style={{
-                  display: "flex",
-                  maxWidth: "320px",
-                  marginBottom: "8px"
-                }}
-              >
+              <RowContainer key={context.name}>
                 <input
+                  id={context.id}
                   type="checkbox"
                   name="contexts"
                   value={context.id}
-                  checked={form.contexts.includes(context.id)}
+                  checked={form.contexts.some(
+                    (o: any) => o.name === context.id
+                  )}
                   onChange={handleContextChange}
-                  style={{ marginRight: "4px" }}
+                  style={{
+                    marginRight: "4px"
+                  }}
                 />
-                {context.text}
-              </label>
+                <label
+                  key={context.id}
+                  htmlFor={context.id}
+                  style={{
+                    display: "flex",
+                    justifyContent: "flex-start",
+                    maxWidth: "320px",
+                    marginBottom: "8px"
+                  }}
+                >
+                  {context.text}
+                </label>
+              </RowContainer>
             );
           })}
-        </ContextContainer>
+        </ContextContainer> */}
         {formErrors.contexts ? (
           <ErrorMessage>
             Du må angi minst et mål som er relevant for tilbudet
@@ -335,58 +457,38 @@ const ObstacleForm = ({
     margin-left: 4px;
   `;
 
-  const FunctionContainer = styled.div`
-    padding: 4px;
+  const FunctionContainer = styled.label`
+    padding: 8px;
     display: flex;
     background-color: #f1f1f1;
-    font-weight: 500;
     margin-bottom: 4px;
+    align-items: center;
   `;
 
   const handleHindranceClick = (
-    e: React.MouseEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const target = e.currentTarget;
-    const newScore =
-      target.value === "Høy" ? 2 : target.value === "Mild" ? 1 : 0;
-    const targetName = target.name;
-    const exists = form.functions.some(
-      (functionObj: any) => functionObj.name === targetName
-    );
-    if (newScore === 0) {
-      if (exists) {
-        setForm({
-          ...form,
-          functions: form.functions.filter(
-            (funcObj: any) => funcObj.name !== targetName
-          )
-        });
-      }
+    const targetName = e.currentTarget.value;
+    if (form.functions.includes(targetName)) {
+      setForm({
+        ...form,
+        functions: form.functions.filter(
+          (funcObj: any) => funcObj !== targetName
+        )
+      });
     } else {
-      if (exists) {
-        setForm({
-          ...form,
-          functions: form.functions.map((funObj: any) => {
-            if (funObj.name === targetName) {
-              return { name: funObj.name, score: newScore };
-            }
-            return funObj;
-          })
-        });
-      } else {
-        setForm({
-          ...form,
-          functions: [
-            ...form.functions,
-            { name: targetName, score: newScore }
-          ]
-        });
-      }
+      setForm({
+        ...form,
+        functions: [...form.functions, targetName]
+      });
     }
   };
 
+  // array of all contexts
   const relevantFunctionLists: any[] = contexts
-    .filter((context: any) => form.contexts.includes(context.id))
+    .filter((context: any) =>
+      form.contexts.some((conObj: any) => conObj.name === context.id)
+    )
     .map((context: any) => context.hindrances);
 
   const relevantFunctions: string[] = [
@@ -411,8 +513,9 @@ const ObstacleForm = ({
               return (
                 <ContextContainerSmall key={context}>
                   {
-                    contexts.find((conObj: any) => conObj.id === context)
-                      .text
+                    contexts.find(
+                      (conObj: any) => conObj.id === context.name
+                    ).text
                   }
                 </ContextContainerSmall>
               );
@@ -422,15 +525,11 @@ const ObstacleForm = ({
       </FormGroup>
       <FormGroup>
         <Label>
-          Sett i forhold til målene som er valgt, hvor relevante er disse
-          hindringene for tilbudet?
+          Sett i forhold til målene som er valgt, hvilke av disse
+          hindringene er relevante for tilbudet?
         </Label>
       </FormGroup>
       <FormGroup>
-        <RowContainer>
-          <Label style={{ width: "70%" }}>Hindring</Label>
-          <Label style={{ width: "30%" }}>Relevans</Label>
-        </RowContainer>
         <ColumnContainer>
           {relevantFunctions.map((functionId: string) => {
             return (
@@ -438,26 +537,29 @@ const ObstacleForm = ({
                 key={functionId}
                 style={{ alignItems: "baseline" }}
               >
-                <span
+                <input
+                  id={functionId}
+                  type="checkbox"
+                  name="contexts"
+                  value={functionId}
+                  checked={form.functions.includes(functionId)}
+                  onChange={handleHindranceClick}
                   style={{
-                    width: "70%",
-                    fontWeight: 400,
-                    marginBottom: "4px"
+                    marginRight: "8px"
                   }}
-                >
-                  {
-                    functions.find(
-                      (funcObj: any) => funcObj.id === functionId
-                    ).text
-                  }
-                </span>
-                <RowContainer style={{ height: "27px", width: "30%" }}>
-                  <SegmentedButtonSmall
+                />
+
+                {
+                  functions.find(
+                    (funcObj: any) => funcObj.id === functionId
+                  ).text
+                }
+                {/* <SegmentedButtonSmall
                     type="button"
                     name={functionId}
                     value="Ingen"
                     onClick={handleHindranceClick}
-                    checked={
+                    defaultChecked={
                       form.functions.some(
                         (funObj: any) =>
                           funObj.name === functionId && funObj.score === 0
@@ -472,7 +574,7 @@ const ObstacleForm = ({
                     name={functionId}
                     value="Mild"
                     onClick={handleHindranceClick}
-                    checked={form.functions.some(
+                    defaultChecked={form.functions.some(
                       (funObj: any) =>
                         funObj.name === functionId && funObj.score === 1
                     )}
@@ -482,12 +584,11 @@ const ObstacleForm = ({
                     name={functionId}
                     value="Høy"
                     onClick={handleHindranceClick}
-                    checked={form.functions.some(
+                    defaultChecked={form.functions.some(
                       (funObj: any) =>
                         funObj.name === functionId && funObj.score === 2
                     )}
-                  />
-                </RowContainer>
+                  /> */}
               </FunctionContainer>
             );
           })}
@@ -552,13 +653,14 @@ const EditServicePage = (props: EditServiceProps) => {
     if (currentPage === 1) {
       if (validateForm()) {
         setCurrentPage(2);
+      } else {
+        window.scrollTo(0, 200);
       }
     }
     if (currentPage === 2) {
       if (validateForm()) {
         if (isEditing) {
           updateService(form);
-          console.log("LOLOLOL");
         } else {
           const newService: Service = {
             id: form.name,
@@ -575,7 +677,7 @@ const EditServicePage = (props: EditServiceProps) => {
 
   const handlePreviousClicked = () => {
     if (currentPage === 1) {
-      //resetEditing();
+      resetEditing();
       history.push("/");
     }
     if (currentPage === 2) {
@@ -585,7 +687,7 @@ const EditServicePage = (props: EditServiceProps) => {
 
   return (
     <ColumnContainer>
-      <Title onClick={() => history.goBack()}>
+      <Title onClick={() => history.push("/")}>
         Tilbake til startsiden       
       </Title>
       <Description>

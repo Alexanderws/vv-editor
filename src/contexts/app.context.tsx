@@ -22,7 +22,7 @@ const getUserName = () => {
     "Elisabeth"
   ];
   //return possibleUsers[Math.floor(Math.random() * possibleUsers.length)];
-  return "Alv";
+  return "Malin";
 };
 
 export const AppContextProvider = (props: any) => {

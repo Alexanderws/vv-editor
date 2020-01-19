@@ -1,4 +1,4 @@
-export const FUNCTION = Object.freeze({
+export const FUNCTION2 = Object.freeze({
   bevege: "bevege",
   balanse: "balanse",
   smerter: "smerter",
@@ -10,10 +10,136 @@ export const FUNCTION = Object.freeze({
   hukommelse: "hukommelse"
 });
 
+export const FUNCTION = Object.freeze({
+  sykdom: "sykdom",
+  dårligMatlyst: "dårligMatlyst",
+  overvektig: "overvektig",
+  ikkeKrefter: "ikkeKrefter",
+  trøbleteVei: "trøbleteVei",
+  langtGå: "langtGå",
+  reddFalle: "reddFalle",
+  psykiskeProblemer: "psykiskeProblemer",
+  dårligHukommelse: "dårligHukommelse",
+  forstårIkkeHandleNett: "forstårIkkeHandleNett",
+  dårligSyn: "dårligSyn",
+  huskerIkkeSpise: "huskerIkkeSpise",
+  redusertBevegelighet: "redusertBevegelighet",
+  smerter: "smerter",
+  reddTrykkeFeil: "reddTrykkeFeil",
+  ikkeLærtDigitaleVerktøy: "ikkeLærtDigitaleVerktøy",
+  hjemmetTilrettelegging: "hjemmetTilrettelegging",
+  utendørsTilrettelegging: "utendørsTilrettelegging",
+  reddGåMegBort: "reddGåMegBort",
+  langtHoldeplassen: "langtHoldeplassen",
+  kommerIkkeInnBussen: "kommerIkkeInnBussen",
+  forstårIkkeKjøperBillett: "forstårIkkeKjøperBillett",
+  klarerIkkeKommeUtAlene: "klarerIkkeKommeUtAlene",
+  nyBydelen: "nyBydelen"
+});
+
 export const functions: any[] = [
   {
+    id: FUNCTION.sykdom,
+    text: "jeg har en sykdom"
+  },
+  {
+    id: FUNCTION.dårligMatlyst,
+    text: "dårlig matlyst"
+  },
+  {
+    id: FUNCTION.overvektig,
+    text: "jeg er overvektig"
+  },
+  {
+    id: FUNCTION.ikkeKrefter,
+    text: "jeg har ikke krefter"
+  },
+  {
+    id: FUNCTION.trøbleteVei,
+    text: "det er trøblete vei"
+  },
+  {
+    id: FUNCTION.langtGå,
+    text: "det er for langt å gå"
+  },
+  {
+    id: FUNCTION.reddFalle,
+    text: "jeg er redd for å falle"
+  },
+  {
+    id: FUNCTION.psykiskeProblemer,
+    text: "jeg har psykiske problemer"
+  },
+  {
+    id: FUNCTION.dårligHukommelse,
+    text: "jeg har dårlig hukommelse"
+  },
+  {
+    id: FUNCTION.forstårIkkeHandleNett,
+    text: "jeg forstår ikke hvordan man handler på nett"
+  },
+  {
+    id: FUNCTION.dårligSyn,
+    text: "jeg har dårlig syn"
+  },
+  {
+    id: FUNCTION.huskerIkkeSpise,
+    text: "jeg husker ikke å spise"
+  },
+  {
+    id: FUNCTION.redusertBevegelighet,
+    text: "redusert bevegelighet"
+  },
+  {
+    id: FUNCTION.smerter,
+    text: "jeg har smerter"
+  },
+  {
+    id: FUNCTION.reddTrykkeFeil,
+    text: "jeg er redd for å trykke feil"
+  },
+  {
+    id: FUNCTION.ikkeLærtDigitaleVerktøy,
+    text: "jeg har ikke lært å bruke digitale verktøy"
+  },
+  {
+    id: FUNCTION.hjemmetTilrettelegging,
+    text: "hjemmet mitt mangler tilrettelegging"
+  },
+  {
+    id: FUNCTION.utendørsTilrettelegging,
+    text: "det mangler utendørs tilrettelegging"
+  },
+  {
+    id: FUNCTION.reddGåMegBort,
+    text: "jeg er redd for å gå meg bort"
+  },
+  {
+    id: FUNCTION.langtHoldeplassen,
+    text: "det er for langt å gå til holdeplassen"
+  },
+  {
+    id: FUNCTION.kommerIkkeInnBussen,
+    text: "jeg kommer ikke inn på bussen"
+  },
+  {
+    id: FUNCTION.forstårIkkeKjøperBillett,
+    text: "jeg forstår ikke hvordan man kjøper billett"
+  },
+  {
+    id: FUNCTION.klarerIkkeKommeUtAlene,
+    text: "klarer ikke å komme ut alene"
+  },
+  {
+    id: FUNCTION.nyBydelen,
+    text: "jeg er ny i bydelen"
+  }
+];
+
+/*export const functions: any[] = [
+  {
     id: FUNCTION.bevege,
-    text: "Jeg har problemer å bevege noen deler av kroppen"
+    text: "Jeg har problemer med å bevege noen deler av kroppen"
   },
   { id: FUNCTION.balanse, text: "Jeg har dårlig balanse" },
   {
@@ -37,52 +163,4 @@ export const functions: any[] = [
     text: "Jeg har dårlig hukommelse / stedsans"
   }
 ];
-
-export const functionsOld = [
-  {
-    id: "id:function/bevegelighet",
-    name: "bevegelighet",
-    description:
-      "redusert bevegelse av ulike årsaker (smerte, muskel, skjelett)"
-  },
-  {
-    id: "id:function/balanse",
-    name: "balanse",
-    description: "dårlig balanse / redd for å falle"
-  },
-  {
-    id: "id:function/angstDepKom",
-    name: "angstDepKom",
-    description: "angst / nedstemt / vansker med å kommunisere"
-  },
-  {
-    id: "id:function/syn",
-    name: "syn",
-    description: "dårlig syn"
-  },
-  {
-    id: "id:function/hørsel",
-    name: "hørsel",
-    description: "dårlig hørsel"
-  },
-  {
-    id: "id:function/digitalKompetanse",
-    name: "digitalKompetanse",
-    description: "ikke flink med PC, internett og lignende"
-  },
-  {
-    id: "id:function/ensomhet",
-    name: "ensomhet",
-    description: "ensom"
-  },
-  {
-    id: "id:function/hukommelse",
-    name: "hukommelse",
-    description: "hukommelse /stedsans"
-  },
-  {
-    id: "id:function/utmattelse",
-    name: "utmattelse",
-    description: "utmattelse"
-  }
-];
+*/

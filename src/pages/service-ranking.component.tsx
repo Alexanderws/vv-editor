@@ -155,29 +155,34 @@ const ServiceRankingPage = (props: ServiceRankingProps) => {
   };
 
   const FunctionList = () => {
+    const activeContext = contexts.find(
+      (obs: any) => obs.id === state.chosenContext
+    );
     return (
       <React.Fragment>
         {functions.map((obstacle: any) => {
-          return (
-            <label
-              key={obstacle.id}
-              style={{
-                display: "flex",
-                maxWidth: "320px",
-                marginBottom: "8px"
-              }}
-            >
-              <input
-                style={{ marginRight: "4px" }}
-                type="checkbox"
-                name={obstacle.text}
-                value={obstacle.id}
-                checked={state.chosenFunctions.includes(obstacle.id)}
-                onChange={handleFunctionChange}
-              />
-              {obstacle.text}
-            </label>
-          );
+          if (activeContext.hindrances.includes(obstacle.id)) {
+            return (
+              <label
+                key={obstacle.id}
+                style={{
+                  display: "flex",
+                  maxWidth: "320px",
+                  marginBottom: "8px"
+                }}
+              >
+                <input
+                  style={{ marginRight: "4px" }}
+                  type="checkbox"
+                  name={obstacle.text}
+                  value={obstacle.id}
+                  checked={state.chosenFunctions.includes(obstacle.id)}
+                  onChange={handleFunctionChange}
+                />
+                {obstacle.text}
+              </label>
+            );
+          }
         })}
       </React.Fragment>
     );
@@ -189,7 +194,6 @@ const ServiceRankingPage = (props: ServiceRankingProps) => {
     );
 
     const handleEditClicked = (service: Service) => {
-      console.log("handleEditClicked - service: ", service);
       setActiveService(true, service);
       history.push("edit-service");
     };
@@ -209,6 +213,10 @@ const ServiceRankingPage = (props: ServiceRankingProps) => {
               <span>
                 <span style={{ fontWeight: 500 }}>Type:</span>{" "}
                 {service.treatment}
+              </span>
+              <span>
+                <span style={{ fontWeight: 500 }}>Score:</span>{" "}
+                {service.score}
               </span>
             </div>
             <RowContainer style={{ justifyContent: "flex-end" }}>

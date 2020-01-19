@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Card from "../components/card.component";
 
 import { AppContext } from "../contexts/app.context";
+import { ServicesContext } from "../contexts/services.context";
 
 interface StartProps extends RouteComponentProps {}
 
@@ -49,9 +50,11 @@ const CardDescription = styled.p`
 const StartPage = (props: StartProps) => {
   const { history, location } = props;
   const { userName } = useContext(AppContext);
+  const { setActiveService } = useContext(ServicesContext);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setActiveService(false, null);
   }, [location.pathname]);
 
   return (

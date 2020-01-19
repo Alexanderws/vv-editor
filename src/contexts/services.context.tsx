@@ -71,25 +71,39 @@ export const ServicesContextProvider = (props: any) => {
     contextName: string,
     functionsList: string[]
   ) => {
+    const HIGH_RELEVANCE_SCORE = 1000;
+    const LOW_RELEVANCE_SCORE = 500;
+    const HINDRANCE_SCORE = 1;
+
     const relevantServices = state.services
-      .filter((service: any) => service.contexts.includes(contextName))
+      .filter((service: any) =>
+        service.contexts.some((e: any) => e.name === contextName)
+      )
       .sort((a: any, b: any) =>
         a.name > b.name ? 1 : a.name < b.name ? -1 : 1
       );
 
     const scoredServices = relevantServices.map((service: any) => {
-      var serviceScore =
-        service.treatment === "forebyggende"
+      var serviceScore = 0;
+      /*service.treatment === "forebyggende"
           ? 2
           : service.treatment === "behandlende"
           ? 1
-          : 0;
-
-      service.functions.forEach((functionObj: any) => {
-        if (functionsList.includes(functionObj.name)) {
-          serviceScore += functionObj.score as number;
+          : 0;*/
+      service.functions.forEach((functionName: string) => {
+        if (functionsList.includes(functionName)) {
+          serviceScore += HINDRANCE_SCORE;
         }
       });
+      let contextRelevance = service.contexts.find((conObj: any) => {
+        return conObj.name === contextName;
+      }).score;
+      serviceScore +=
+        contextRelevance === 1
+          ? LOW_RELEVANCE_SCORE
+          : HIGH_RELEVANCE_SCORE;
+
+      //service.contexts.find()
 
       return {
         ...service,

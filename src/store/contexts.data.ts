@@ -1,6 +1,6 @@
 import { FUNCTION } from "./functions.data";
 
-export const CONTEXT = Object.freeze({
+/*export const CONTEXT = Object.freeze({
   kommeRundtHjemme: "kommeRundtHjemme",
   kommeRundtUtenforHjemmet: "kommeRundtUtenforHjemmet",
   kollektivTransport: "kollektivTransport",
@@ -13,160 +13,165 @@ export const CONTEXT = Object.freeze({
   kontrollTanker: "kontrollTanker",
   endreKosthold: "endreKosthold",
   personligStell: "personligStell"
+});*/
+
+export const CONTEXT = Object.freeze({
+  spiseTilpassetMat: "spiseTilpassetMat",
+  godFysiskForm: "godFysiskForm",
+  slutteRøykSnus: "slutteRøykSnus",
+  handleMat: "handleMat",
+  klareSpise: "klareSpise",
+  kleMeg: "kleMeg",
+  personligHygiene: "personligHygiene",
+  brukeInternett: "brukeInternett",
+  forflytteMegHjemme: "forflytteMegHjemme",
+  forflytteMegUtenfor: "forflytteMegUtenfor",
+  brukeKollektivtransport: "brukeKollektivtransport",
+  skaffeHobby: "skaffeHobby",
+  treffeFolk: "treffeFolk",
+  bidraSamfunn: "bidraSamfunn"
 });
 
 export const contexts: any[] = [
   {
-    id: CONTEXT.kommeRundtHjemme,
-    text: "Komme meg rundt i mitt eget hjem",
-    textDefinite: "komme deg rundt i eget hjem",
+    id: CONTEXT.spiseTilpassetMat,
+    text: "Spise mat som er tilpasset min situasjon",
+    textDefinite: "spise mat som er tilpasset min situasjon",
     hindrances: [
-      FUNCTION.bevege,
-      FUNCTION.balanse,
-      FUNCTION.smerter,
-      FUNCTION.syn
+      FUNCTION.sykdom,
+      FUNCTION.dårligMatlyst,
+      FUNCTION.overvektig
     ]
   },
   {
-    id: CONTEXT.kommeRundtUtenforHjemmet,
-    text: "Komme meg fra A til B utenfor hjemmet",
-    textDefinite: "komme deg fra A til B utenfor hjemmet",
-    hindrances: [
-      FUNCTION.bevege,
-      FUNCTION.balanse,
-      FUNCTION.smerter,
-      FUNCTION.nedstemt,
-      FUNCTION.overfalt,
-      FUNCTION.syn,
-      FUNCTION.hørsel
-    ]
+    id: CONTEXT.godFysiskForm,
+    text: "Fortsette å være i god fysisk form",
+    textDefinite: "fortsette å være i god fysisk form",
+    hindrances: []
   },
   {
-    id: CONTEXT.kollektivTransport,
-    text: "Bruke kollektivtransport og drosje",
-    textDefinite: "bruke kollektivtransport og drosje",
-    hindrances: [
-      FUNCTION.bevege,
-      FUNCTION.balanse,
-      FUNCTION.smerter,
-      FUNCTION.overfalt,
-      FUNCTION.syn,
-      FUNCTION.hørsel,
-      FUNCTION.digitalKompetanse
-    ]
+    id: CONTEXT.slutteRøykSnus,
+    text: "Slutte med røyk eller snus",
+    textDefinite: "slutte med røyk eller snus",
+    hindrances: []
   },
   {
     id: CONTEXT.handleMat,
     text: "Handle mat og andre varer",
     textDefinite: "handle mat og andre varer",
     hindrances: [
-      FUNCTION.bevege,
-      FUNCTION.balanse,
-      FUNCTION.smerter,
-      FUNCTION.nedstemt,
-      FUNCTION.overfalt,
-      FUNCTION.syn,
-      FUNCTION.digitalKompetanse,
-      FUNCTION.hukommelse
+      FUNCTION.ikkeKrefter,
+      FUNCTION.trøbleteVei,
+      FUNCTION.langtGå,
+      FUNCTION.reddFalle,
+      FUNCTION.psykiskeProblemer,
+      FUNCTION.dårligHukommelse,
+      FUNCTION.forstårIkkeHandleNett
+    ]
+  },
+  {
+    id: CONTEXT.klareSpise,
+    text: "Klare å spise",
+    textDefinite: "klare å spise",
+    hindrances: [
+      FUNCTION.dårligMatlyst,
+      FUNCTION.dårligSyn,
+      FUNCTION.huskerIkkeSpise
+    ]
+  },
+  {
+    id: CONTEXT.kleMeg,
+    text: "Kle meg selv",
+    textDefinite: "kle meg selv",
+    hindrances: [
+      FUNCTION.ikkeKrefter,
+      FUNCTION.reddFalle,
+      FUNCTION.dårligHukommelse,
+      FUNCTION.redusertBevegelighet,
+      FUNCTION.smerter
+    ]
+  },
+  {
+    id: CONTEXT.personligHygiene,
+    text: "Ivareta personlig hygiene",
+    textDefinite: "ivareta personlig hygiene",
+    hindrances: [
+      FUNCTION.reddFalle,
+      FUNCTION.psykiskeProblemer,
+      FUNCTION.ikkeKrefter,
+      FUNCTION.redusertBevegelighet,
+      FUNCTION.smerter
     ]
   },
   {
     id: CONTEXT.brukeInternett,
-    text:
-      "Bruke mobil, internett, f.eks. e-post, nettbank, Facebook e.l.",
-    textDefinite:
-      "bruke mobil, internett, f.eks. e-post, nettbank, Facebook e.l.",
+    text: "Bruke internett, sosiale medier eller apper",
+    textDefinite: "bruke internett, sosiale medier eller apper",
     hindrances: [
-      FUNCTION.bevege,
-      FUNCTION.nedstemt,
-      FUNCTION.syn,
-      FUNCTION.digitalKompetanse
+      FUNCTION.dårligHukommelse,
+      FUNCTION.dårligSyn,
+      FUNCTION.reddTrykkeFeil,
+      FUNCTION.ikkeLærtDigitaleVerktøy
     ]
   },
   {
-    id: CONTEXT.deltaSamfunn,
-    text: "Delta i samfunnet",
-    textDefinite: "delta i samfunnet",
+    id: CONTEXT.forflytteMegHjemme,
+    text: "Forflytte meg rundt i hjemmet mitt",
+    textDefinite: "Forflytte meg rundt i hjemmet ditt",
     hindrances: [
-      FUNCTION.bevege,
-      FUNCTION.nedstemt,
-      FUNCTION.syn,
-      FUNCTION.hørsel,
-      FUNCTION.digitalKompetanse
+      FUNCTION.reddFalle,
+      FUNCTION.redusertBevegelighet,
+      FUNCTION.hjemmetTilrettelegging
     ]
   },
   {
-    id: CONTEXT.hobby,
-    text: "Drive med hobby",
-    textDefinite: "drive med hobby",
+    id: CONTEXT.forflytteMegUtenfor,
+    text: "Forflytte meg rundt utenfor hjemmet mitt",
+    textDefinite: "forflytte meg rundt utenfor hjemmet ditt",
     hindrances: [
-      FUNCTION.bevege,
-      FUNCTION.balanse,
-      FUNCTION.nedstemt,
-      FUNCTION.syn,
-      FUNCTION.digitalKompetanse
+      FUNCTION.psykiskeProblemer,
+      FUNCTION.reddFalle,
+      FUNCTION.redusertBevegelighet,
+      FUNCTION.utendørsTilrettelegging,
+      FUNCTION.reddGåMegBort
     ]
   },
   {
-    id: CONTEXT.fysiskAktivitet,
-    text: "Være i fysisk aktivitet",
-    textDefinite: "være i fysisk aktivitet",
+    id: CONTEXT.brukeKollektivtransport,
+    text: "Bruke kollektivtransport",
+    textDefinite: "bruke kollektivtransport",
     hindrances: [
-      FUNCTION.bevege,
-      FUNCTION.balanse,
-      FUNCTION.smerter,
-      FUNCTION.nedstemt,
-      FUNCTION.hukommelse,
-      FUNCTION.overfalt,
-      FUNCTION.syn
+      FUNCTION.trøbleteVei,
+      FUNCTION.reddFalle,
+      FUNCTION.psykiskeProblemer,
+      FUNCTION.dårligHukommelse,
+      FUNCTION.redusertBevegelighet,
+      FUNCTION.langtHoldeplassen,
+      FUNCTION.kommerIkkeInnBussen,
+      FUNCTION.forstårIkkeKjøperBillett
     ]
   },
   {
-    id: CONTEXT.sosialisere,
-    text: "Være sammen med folk",
-    textDefinite: "være sammen med folk",
+    id: CONTEXT.skaffeHobby,
+    text: "Skaffe meg en hobby",
+    textDefinite: "skaffe deg en hobby",
+    hindrances: []
+  },
+  {
+    id: CONTEXT.treffeFolk,
+    text: "Treffe folk",
+    textDefinite: "treffe folk",
     hindrances: [
-      FUNCTION.bevege,
-      FUNCTION.balanse,
-      FUNCTION.smerter,
-      FUNCTION.nedstemt,
-      FUNCTION.syn,
-      FUNCTION.hørsel,
-      FUNCTION.digitalKompetanse
+      FUNCTION.psykiskeProblemer,
+      FUNCTION.dårligHukommelse,
+      FUNCTION.klarerIkkeKommeUtAlene,
+      FUNCTION.nyBydelen
     ]
   },
   {
-    id: CONTEXT.kontrollTanker,
-    text: "Ha kontroll på tankene mine",
-    textDefinite: "ha kontroll på tankene dine",
-    hindrances: [
-      FUNCTION.bevege,
-      FUNCTION.balanse,
-      FUNCTION.smerter,
-      FUNCTION.syn
-    ]
-  },
-  {
-    id: CONTEXT.endreKosthold,
-    text: "Endre kostholdet mitt",
-    textDefinite: "endre kostholdet ditt",
-    hindrances: [
-      FUNCTION.bevege,
-      FUNCTION.smerter,
-      FUNCTION.nedstemt,
-      FUNCTION.syn
-    ]
-  },
-  {
-    id: CONTEXT.personligStell,
-    text: "Ivareta personlig stell",
-    textDefinite: "Ivareta personlig stell",
-    hindrances: [
-      FUNCTION.bevege,
-      FUNCTION.balanse,
-      FUNCTION.smerter,
-      FUNCTION.nedstemt,
-      FUNCTION.syn
-    ]
+    id: CONTEXT.bidraSamfunn,
+    text: "Bidra i samfunnet og hjelpe andre",
+    textDefinite: "bidra i samfunnet og hjelpe andre",
+    hindrances: []
   }
 ];
