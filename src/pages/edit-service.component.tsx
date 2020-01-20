@@ -297,7 +297,7 @@ const OverviewForm = ({
           ""
         )}
       </FormGroup>
-      <FormGroup>
+      {/* <FormGroup>
         <Label htmlFor="treatment">Tilbudet er primært</Label>
         <RowContainer style={{ height: "48px" }}>
           <SegmentedButton
@@ -329,7 +329,7 @@ const OverviewForm = ({
         ) : (
           ""
         )}
-      </FormGroup>
+      </FormGroup> */}
       <FormGroup>
         <RowContainer>
           <Label style={{ width: "70%" }}>Mål</Label>
@@ -539,7 +539,7 @@ const EditServicePage = (props: EditServiceProps) => {
           id: "",
           name: "",
           description: "",
-          treatment: "",
+          treatment: TREATMENT.kompenserende,
           moreInformationURL: "",
           contexts: [],
           functions: []
