@@ -21,8 +21,7 @@ const getUserName = () => {
     "Paul",
     "Elisabeth"
   ];
-  //return possibleUsers[Math.floor(Math.random() * possibleUsers.length)];
-  return "Malin";
+  return possibleUsers[Math.floor(Math.random() * possibleUsers.length)];
 };
 
 export const AppContextProvider = (props: any) => {

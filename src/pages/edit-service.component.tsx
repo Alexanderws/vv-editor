@@ -441,15 +441,10 @@ const OverviewForm = ({
   );
 };
 
-const ObstacleForm = ({
-  form,
-  setForm,
-  formErrors,
-  setFormErrors
-}: FormProps) => {
+const ObstacleForm = ({ form, setForm }: FormProps) => {
   const ContextContainerSmall = styled.div`
     padding: 4px;
-    display: flex;
+    display: inline-flex;
     background-color: #f1f1f1;
     font-style: italic;
     font-weight: 500;
@@ -497,7 +492,7 @@ const ObstacleForm = ({
 
   return (
     <React.Fragment>
-      <FormGroup>
+      {/* <FormGroup>
         <RowContainer>
           <span
             style={{
@@ -522,14 +517,62 @@ const ObstacleForm = ({
             })}
           </RowContainer>
         </RowContainer>
-      </FormGroup>
+      </FormGroup> */}
       <FormGroup>
         <Label>
-          Sett i forhold til målene som er valgt, hvilke av disse
-          hindringene er relevante for tilbudet?
+          Sett i forhold til målene som er valgt, hvilke av hindringen
+          nedenfor er relevante for tilbudet?
         </Label>
       </FormGroup>
       <FormGroup>
+        {form.contexts.map((context: any) => {
+          let hindrances = contexts.find(
+            (conObj: any) => conObj.id === context.name
+          ).hindrances;
+          if (hindrances.length > 0) {
+            return (
+              <FormGroup>
+                <span>
+                  Disse hindringene er relevante for målet
+                  <ContextContainerSmall key={context}>
+                    {
+                      contexts.find(
+                        (conObj: any) => conObj.id === context.name
+                      ).text
+                    }
+                  </ContextContainerSmall>
+                </span>
+                {hindrances.map((hindranceId: any) => {
+                  return (
+                    <FunctionContainer
+                      key={hindranceId}
+                      style={{ alignItems: "baseline" }}
+                    >
+                      <input
+                        id={hindranceId}
+                        type="checkbox"
+                        name="contexts"
+                        value={hindranceId}
+                        checked={form.functions.includes(hindranceId)}
+                        onChange={handleHindranceClick}
+                        style={{
+                          marginRight: "8px"
+                        }}
+                      />
+                      {
+                        functions.find(
+                          (funcObj: any) => funcObj.id === hindranceId
+                        ).text
+                      }
+                    </FunctionContainer>
+                  );
+                })}
+              </FormGroup>
+            );
+          } else return;
+        })}
+      </FormGroup>
+      {/*<FormGroup>
         <ColumnContainer>
           {relevantFunctions.map((functionId: string) => {
             return (
@@ -548,7 +591,6 @@ const ObstacleForm = ({
                     marginRight: "8px"
                   }}
                 />
-
                 {
                   functions.find(
                     (funcObj: any) => funcObj.id === functionId
@@ -588,12 +630,12 @@ const ObstacleForm = ({
                       (funObj: any) =>
                         funObj.name === functionId && funObj.score === 2
                     )}
-                  /> */}
+                  /> 
               </FunctionContainer>
             );
           })}
         </ColumnContainer>
-      </FormGroup>
+        </FormGroup>*/}
     </React.Fragment>
   );
 };
