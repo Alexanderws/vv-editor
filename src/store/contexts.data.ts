@@ -29,7 +29,8 @@ export const CONTEXT = Object.freeze({
   brukeKollektivtransport: "brukeKollektivtransport",
   skaffeHobby: "skaffeHobby",
   treffeFolk: "treffeFolk",
-  bidraSamfunn: "bidraSamfunn"
+  bidraSamfunn: "bidraSamfunn",
+  bedrePsykisk: "bedrePsykisk"
 });
 
 export const contexts: any[] = [
@@ -173,5 +174,11 @@ export const contexts: any[] = [
     text: "Bidra i samfunnet og hjelpe andre",
     textDefinite: "bidra i samfunnet og hjelpe andre",
     hindrances: []
+  },
+  {
+    id: CONTEXT.bedrePsykisk,
+    text: "Ha det bedre psykisk",
+    textDefinite: "ha det bedre psykisk",
+    hindrances: [FUNCTION.vondeTanker, FUNCTION.indreUro]
   }
 ];

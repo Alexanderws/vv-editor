@@ -7,7 +7,9 @@ export const FUNCTION2 = Object.freeze({
   syn: "syn",
   hørsel: "hørsel",
   digitalKompetanse: "digitalKompetanse",
-  hukommelse: "hukommelse"
+  hukommelse: "hukommelse",
+  vondeTanker: "vondeTanker",
+  indreUro: "indreUro"
 });
 
 export const FUNCTION = Object.freeze({
@@ -34,7 +36,9 @@ export const FUNCTION = Object.freeze({
   kommerIkkeInnBussen: "kommerIkkeInnBussen",
   forstårIkkeKjøperBillett: "forstårIkkeKjøperBillett",
   klarerIkkeKommeUtAlene: "klarerIkkeKommeUtAlene",
-  nyBydelen: "nyBydelen"
+  nyBydelen: "nyBydelen",
+  vondeTanker: "vondeTanker",
+  indreUro: "indreUro"
 });
 
 export const functions: any[] = [
@@ -133,6 +137,14 @@ export const functions: any[] = [
   {
     id: FUNCTION.nyBydelen,
     text: "jeg er ny i bydelen"
+  },
+  {
+    id: FUNCTION.vondeTanker,
+    text: "jeg sliter med vonde og triste tanker"
+  },
+  {
+    id: FUNCTION.indreUro,
+    text: "jeg opplever angst og indre uro"
   }
 ];
 

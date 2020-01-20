@@ -102,7 +102,8 @@ const ServiceRankingPage = (props: ServiceRankingProps) => {
     const value = e.target.value;
     setState((prevState: any) => ({
       ...prevState,
-      chosenContext: value
+      chosenContext: value,
+      chosenFunctions: []
     }));
   };
 

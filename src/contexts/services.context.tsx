@@ -75,13 +75,21 @@ export const ServicesContextProvider = (props: any) => {
     const LOW_RELEVANCE_SCORE = 500;
     const HINDRANCE_SCORE = 1;
 
-    const relevantServices = state.services
+    var relevantServices = state.services
       .filter((service: any) =>
         service.contexts.some((e: any) => e.name === contextName)
       )
       .sort((a: any, b: any) =>
         a.name > b.name ? 1 : a.name < b.name ? -1 : 1
       );
+
+    if (functionsList.length > 0) {
+      relevantServices = relevantServices.filter((service: any) =>
+        service.functions.some((hindranceName: any) =>
+          functionsList.includes(hindranceName)
+        )
+      );
+    }
 
     const scoredServices = relevantServices.map((service: any) => {
       var serviceScore = 0;

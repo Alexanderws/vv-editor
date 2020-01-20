@@ -84,7 +84,7 @@ export const services: Service[] = [
     description: "SFMS",
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
-    contexts: [{ name: CONTEXT.godFysiskForm, score: 2 }],
+    contexts: [{ name: CONTEXT.godFysiskForm, score: 1 }],
     functions: []
   },
   {
@@ -94,8 +94,8 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
     contexts: [
-      { name: CONTEXT.godFysiskForm, score: 1 },
-      { name: CONTEXT.skaffeHobby, score: 1 }
+      { name: CONTEXT.godFysiskForm, score: 2 },
+      { name: CONTEXT.skaffeHobby, score: 2 }
     ],
     functions: []
   },
@@ -107,17 +107,14 @@ export const services: Service[] = [
     treatment: TREATMENT.forebyggende,
     contexts: [
       { name: CONTEXT.treffeFolk, score: 1 },
-      { name: CONTEXT.bidraSamfunn, score: 1 },
       { name: CONTEXT.skaffeHobby, score: 1 },
       { name: CONTEXT.godFysiskForm, score: 2 }
     ],
     functions: [
       FUNCTION.klarerIkkeKommeUtAlene,
       FUNCTION.redusertBevegelighet,
-      FUNCTION.kommerIkkeInnBussen,
       FUNCTION.reddFalle,
-      FUNCTION.langtGå,
-      FUNCTION.langtHoldeplassen
+      FUNCTION.langtGå
     ]
   },
   {
@@ -144,8 +141,17 @@ export const services: Service[] = [
     description: "Folkvang",
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
-    contexts: [{ name: CONTEXT.godFysiskForm, score: 2 }],
-    functions: []
+    contexts: [
+      { name: CONTEXT.treffeFolk, score: 1 },
+      { name: CONTEXT.skaffeHobby, score: 1 },
+      { name: CONTEXT.godFysiskForm, score: 2 }
+    ],
+    functions: [
+      FUNCTION.klarerIkkeKommeUtAlene,
+      FUNCTION.redusertBevegelighet,
+      FUNCTION.reddFalle,
+      FUNCTION.langtGå
+    ]
   },
   {
     id: "id:service/stovner60Pluss",
@@ -223,8 +229,7 @@ export const services: Service[] = [
     ],
     functions: [
       FUNCTION.kommerIkkeInnBussen,
-      FUNCTION.redusertBevegelighet,
-      FUNCTION.reddGåMegBort
+      FUNCTION.redusertBevegelighet
     ]
   },
   {
@@ -235,11 +240,16 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
     contexts: [
-      { name: CONTEXT.forflytteMegUtenfor, score: 2 },
-      { name: CONTEXT.brukeKollektivtransport, score: 2 },
-      { name: CONTEXT.treffeFolk, score: 2 }
+      { name: CONTEXT.forflytteMegUtenfor, score: 1 },
+      { name: CONTEXT.brukeKollektivtransport, score: 1 },
+      { name: CONTEXT.treffeFolk, score: 1 },
+      { name: CONTEXT.bedrePsykisk, score: 2 }
     ],
-    functions: [FUNCTION.psykiskeProblemer]
+    functions: [
+      FUNCTION.psykiskeProblemer,
+      FUNCTION.indreUro,
+      FUNCTION.vondeTanker
+    ]
   },
   {
     id: "id:service/trygghetsalarm",
@@ -248,15 +258,8 @@ export const services: Service[] = [
       "Tilbudet er for deg som har behov for en stasjonær trygghetsalarm instalert i hjemmet ditt, slik at du kan tilkalle hjelp i akutte situasjoner når som helst på døgnet. Alarmknappen kan bæres på håndledd eller i snor rundt halsen og alle over 75 år kan få denne uten behovsvurdering.",
     moreInformationURL: "",
     treatment: TREATMENT.behandlende,
-    contexts: [
-      { name: CONTEXT.forflytteMegUtenfor, score: 2 },
-      { name: CONTEXT.forflytteMegHjemme, score: 2 }
-    ],
-    functions: [
-      FUNCTION.reddFalle,
-      FUNCTION.dårligHukommelse,
-      FUNCTION.reddGåMegBort
-    ]
+    contexts: [{ name: CONTEXT.forflytteMegHjemme, score: 2 }],
+    functions: [FUNCTION.reddFalle, FUNCTION.dårligHukommelse]
   },
   {
     id: "id:service/hjelpemidlerForflytning",
@@ -266,10 +269,10 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
     contexts: [
-      { name: CONTEXT.handleMat, score: 2 },
+      { name: CONTEXT.handleMat, score: 1 },
       { name: CONTEXT.forflytteMegHjemme, score: 2 },
       { name: CONTEXT.forflytteMegUtenfor, score: 2 },
-      { name: CONTEXT.brukeKollektivtransport, score: 2 }
+      { name: CONTEXT.brukeKollektivtransport, score: 1 }
     ],
     functions: [
       FUNCTION.reddFalle,
@@ -320,7 +323,6 @@ export const services: Service[] = [
     contexts: [
       { name: CONTEXT.forflytteMegUtenfor, score: 2 },
       { name: CONTEXT.forflytteMegHjemme, score: 2 },
-      { name: CONTEXT.brukeKollektivtransport, score: 1 },
       { name: CONTEXT.treffeFolk, score: 1 }
     ],
     functions: [FUNCTION.redusertBevegelighet, FUNCTION.reddFalle]
@@ -333,14 +335,11 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.behandlende,
     contexts: [
-      { name: CONTEXT.forflytteMegUtenfor, score: 2 },
-      { name: CONTEXT.forflytteMegHjemme, score: 2 },
-      { name: CONTEXT.handleMat, score: 2 },
-      { name: CONTEXT.personligHygiene, score: 2 },
-      { name: CONTEXT.brukeKollektivtransport, score: 2 },
-      { name: CONTEXT.klareSpise, score: 2 },
-      { name: CONTEXT.kleMeg, score: 2 },
-      { name: CONTEXT.brukeInternett, score: 2 }
+      { name: CONTEXT.forflytteMegUtenfor, score: 1 },
+      { name: CONTEXT.forflytteMegHjemme, score: 1 },
+      { name: CONTEXT.personligHygiene, score: 1 },
+      { name: CONTEXT.klareSpise, score: 1 },
+      { name: CONTEXT.kleMeg, score: 1 }
     ],
     functions: [
       FUNCTION.ikkeKrefter,
@@ -363,7 +362,7 @@ export const services: Service[] = [
     contexts: [
       { name: CONTEXT.handleMat, score: 2 },
       { name: CONTEXT.brukeInternett, score: 2 },
-      { name: CONTEXT.brukeKollektivtransport, score: 2 }
+      { name: CONTEXT.brukeKollektivtransport, score: 1 }
     ],
     functions: [
       FUNCTION.forstårIkkeHandleNett,
@@ -381,7 +380,7 @@ export const services: Service[] = [
     contexts: [
       { name: CONTEXT.handleMat, score: 2 },
       { name: CONTEXT.brukeInternett, score: 2 },
-      { name: CONTEXT.brukeKollektivtransport, score: 2 }
+      { name: CONTEXT.brukeKollektivtransport, score: 1 }
     ],
     functions: [
       FUNCTION.forstårIkkeHandleNett,
@@ -398,8 +397,8 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.behandlende,
     contexts: [
-      { name: CONTEXT.forflytteMegHjemme, score: 2 },
-      { name: CONTEXT.forflytteMegUtenfor, score: 2 }
+      { name: CONTEXT.forflytteMegHjemme, score: 1 },
+      { name: CONTEXT.forflytteMegUtenfor, score: 1 }
     ],
     functions: [
       FUNCTION.redusertBevegelighet,
@@ -486,7 +485,7 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.behandlende,
     contexts: [
-      { name: CONTEXT.skaffeHobby, score: 1 },
+      { name: CONTEXT.skaffeHobby, score: 2 },
       { name: CONTEXT.treffeFolk, score: 2 }
     ],
     functions: [FUNCTION.nyBydelen]
@@ -526,8 +525,8 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
     contexts: [
-      { name: CONTEXT.handleMat, score: 1 },
-      { name: CONTEXT.forflytteMegUtenfor, score: 2 }
+      { name: CONTEXT.handleMat, score: 2 },
+      { name: CONTEXT.forflytteMegUtenfor, score: 1 }
     ],
     functions: [
       FUNCTION.ikkeKrefter,
@@ -542,10 +541,15 @@ export const services: Service[] = [
     description: ".",
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
-    contexts: [{ name: CONTEXT.treffeFolk, score: 2 }],
+    contexts: [
+      { name: CONTEXT.treffeFolk, score: 2 },
+      { name: CONTEXT.bedrePsykisk, score: 2 }
+    ],
     functions: [
       FUNCTION.klarerIkkeKommeUtAlene,
-      FUNCTION.psykiskeProblemer
+      FUNCTION.psykiskeProblemer,
+      FUNCTION.vondeTanker,
+      FUNCTION.indreUro
     ]
   },
   {
@@ -558,6 +562,20 @@ export const services: Service[] = [
     contexts: [
       { name: CONTEXT.godFysiskForm, score: 2 },
       { name: CONTEXT.treffeFolk, score: 2 }
+    ],
+    functions: [FUNCTION.nyBydelen]
+  },
+  {
+    id: "id:service/stovnerEldresenter",
+    name: "Stovener Eldresenter",
+    description:
+      "Stovner eldresenter er et populært samlingssted for deg over 60 år.",
+    moreInformationURL: "",
+    treatment: TREATMENT.forebyggende,
+    contexts: [
+      { name: CONTEXT.godFysiskForm, score: 2 },
+      { name: CONTEXT.treffeFolk, score: 2 },
+      { name: CONTEXT.bidraSamfunn, score: 2 }
     ],
     functions: [FUNCTION.nyBydelen]
   }
