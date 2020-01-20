@@ -392,43 +392,6 @@ const OverviewForm = ({
             );
           })}
         </ColumnContainer>
-
-        {/* <Label htmlFor="contexts">
-          Tilbudet er relevant for følgende mål
-        </Label>
-        <ContextContainer>
-          {contexts.map((context: any) => {
-            return (
-              <RowContainer key={context.name}>
-                <input
-                  id={context.id}
-                  type="checkbox"
-                  name="contexts"
-                  value={context.id}
-                  checked={form.contexts.some(
-                    (o: any) => o.name === context.id
-                  )}
-                  onChange={handleContextChange}
-                  style={{
-                    marginRight: "4px"
-                  }}
-                />
-                <label
-                  key={context.id}
-                  htmlFor={context.id}
-                  style={{
-                    display: "flex",
-                    justifyContent: "flex-start",
-                    maxWidth: "320px",
-                    marginBottom: "8px"
-                  }}
-                >
-                  {context.text}
-                </label>
-              </RowContainer>
-            );
-          })}
-        </ContextContainer> */}
         {formErrors.contexts ? (
           <ErrorMessage>
             Du må angi minst et mål som er relevant for tilbudet
@@ -479,7 +442,7 @@ const ObstacleForm = ({ form, setForm }: FormProps) => {
     }
   };
 
-  // array of all contexts
+  // array of all functions
   const relevantFunctionLists: any[] = contexts
     .filter((context: any) =>
       form.contexts.some((conObj: any) => conObj.name === context.id)
@@ -492,36 +455,11 @@ const ObstacleForm = ({ form, setForm }: FormProps) => {
 
   return (
     <React.Fragment>
-      {/* <FormGroup>
-        <RowContainer>
-          <span
-            style={{
-              fontWeight: 500,
-              padding: "4px 0",
-              whiteSpace: "nowrap"
-            }}
-          >
-            Valgte mål:
-          </span>
-          <RowContainer style={{ flexWrap: "wrap" }}>
-            {form.contexts.map((context: any) => {
-              return (
-                <ContextContainerSmall key={context}>
-                  {
-                    contexts.find(
-                      (conObj: any) => conObj.id === context.name
-                    ).text
-                  }
-                </ContextContainerSmall>
-              );
-            })}
-          </RowContainer>
-        </RowContainer>
-      </FormGroup> */}
       <FormGroup>
         <Label>
-          Sett i forhold til målene som er valgt, hvilke av hindringen
-          nedenfor er relevante for tilbudet?
+          {relevantFunctions.length > 0
+            ? "Sett i forhold til målene som er valgt, hvilke av hindringene nedenfor er relevante for tilbudet?"
+            : "Målene du valgte for tilbudet har ingen relevante hindringer."}
         </Label>
       </FormGroup>
       <FormGroup>
@@ -572,70 +510,6 @@ const ObstacleForm = ({ form, setForm }: FormProps) => {
           } else return;
         })}
       </FormGroup>
-      {/*<FormGroup>
-        <ColumnContainer>
-          {relevantFunctions.map((functionId: string) => {
-            return (
-              <FunctionContainer
-                key={functionId}
-                style={{ alignItems: "baseline" }}
-              >
-                <input
-                  id={functionId}
-                  type="checkbox"
-                  name="contexts"
-                  value={functionId}
-                  checked={form.functions.includes(functionId)}
-                  onChange={handleHindranceClick}
-                  style={{
-                    marginRight: "8px"
-                  }}
-                />
-                {
-                  functions.find(
-                    (funcObj: any) => funcObj.id === functionId
-                  ).text
-                }
-                {/* <SegmentedButtonSmall
-                    type="button"
-                    name={functionId}
-                    value="Ingen"
-                    onClick={handleHindranceClick}
-                    defaultChecked={
-                      form.functions.some(
-                        (funObj: any) =>
-                          funObj.name === functionId && funObj.score === 0
-                      ) ||
-                      !form.functions.some(
-                        (funObj: any) => funObj.name === functionId
-                      )
-                    }
-                  />
-                  <SegmentedButtonSmall
-                    type="button"
-                    name={functionId}
-                    value="Mild"
-                    onClick={handleHindranceClick}
-                    defaultChecked={form.functions.some(
-                      (funObj: any) =>
-                        funObj.name === functionId && funObj.score === 1
-                    )}
-                  />
-                  <SegmentedButtonSmall
-                    type="button"
-                    name={functionId}
-                    value="Høy"
-                    onClick={handleHindranceClick}
-                    defaultChecked={form.functions.some(
-                      (funObj: any) =>
-                        funObj.name === functionId && funObj.score === 2
-                    )}
-                  /> 
-              </FunctionContainer>
-            );
-          })}
-        </ColumnContainer>
-        </FormGroup>*/}
     </React.Fragment>
   );
 };
