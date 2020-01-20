@@ -105,15 +105,6 @@ export const services: Service[] = [
     description: "SE",
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
-    contexts: [{ name: CONTEXT.godFysiskForm, score: 2 }],
-    functions: []
-  },
-  {
-    id: "id:service/stovnerEldresenter",
-    name: "Fallforebyggende gruppetrening",
-    description: "SE",
-    moreInformationURL: "",
-    treatment: TREATMENT.forebyggende,
     contexts: [
       { name: CONTEXT.treffeFolk, score: 1 },
       { name: CONTEXT.bidraSamfunn, score: 1 },
@@ -194,20 +185,6 @@ export const services: Service[] = [
   },
   {
     id: "id:service/varerBestiltHjem",
-    name: "Varer bestilt hjem",
-    description: "",
-    moreInformationURL: "",
-    treatment: TREATMENT.kompenserende,
-    contexts: [{ name: CONTEXT.handleMat, score: 2 }],
-    functions: [
-      FUNCTION.ikkeKrefter,
-      FUNCTION.trøbleteVei,
-      FUNCTION.langtGå,
-      FUNCTION.reddFalle
-    ]
-  },
-  {
-    id: "id:service/hjelpemidler",
     name: "Varer bestilt hjem",
     description: "",
     moreInformationURL: "",
