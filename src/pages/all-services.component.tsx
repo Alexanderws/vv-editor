@@ -74,7 +74,6 @@ const AllServicesPage = (props: AllServicesProps) => {
     );
 
     const handleEditClicked = (service: Service) => {
-      console.log("handleEditClicked - service: ", service);
       setActiveService(true, service);
       history.push("edit-service");
     };
@@ -85,14 +84,6 @@ const AllServicesPage = (props: AllServicesProps) => {
           <Card key={service.id}>
             <CardTitle>{service.name}</CardTitle>
             <CardDescription>{service.description}</CardDescription>
-            <div
-              style={{ display: "flex", justifyContent: "space-between" }}
-            >
-              <span>
-                <span style={{ fontWeight: 500 }}>Type:</span>{" "}
-                {service.treatment}
-              </span>
-            </div>
             <RowContainer style={{ justifyContent: "flex-end" }}>
               <ActionButton
                 secondary

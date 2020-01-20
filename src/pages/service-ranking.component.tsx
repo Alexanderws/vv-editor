@@ -211,10 +211,6 @@ const ServiceRankingPage = (props: ServiceRankingProps) => {
               style={{ display: "flex", justifyContent: "space-between" }}
             >
               <span>
-                <span style={{ fontWeight: 500 }}>Type:</span>{" "}
-                {service.treatment}
-              </span>
-              <span>
                 <span style={{ fontWeight: 500 }}>Score:</span>{" "}
                 {service.score}
               </span>
