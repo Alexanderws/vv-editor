@@ -37,10 +37,7 @@ export const services: Service[] = [
     description: "SE",
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
-    contexts: [
-      { name: CONTEXT.skaffeHobby, score: 2 },
-      { name: CONTEXT.treffeFolk, score: 2 }
-    ],
+    contexts: [{ name: CONTEXT.skaffeHobby, score: 2 }],
     functions: []
   },
   {
@@ -146,7 +143,6 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
     contexts: [
-      { name: CONTEXT.treffeFolk, score: 1 },
       { name: CONTEXT.skaffeHobby, score: 1 },
       { name: CONTEXT.godFysiskForm, score: 2 }
     ],
@@ -397,10 +393,7 @@ export const services: Service[] = [
       "Fysioterapeuter gir deg tilpasset behandling, trening og veiledning etter operasjon, ved skader, eller om du har kroniske sykdommer. Du kan ta direkte kontakt uten henvisning fra lege. Du betaler kun egenandel når fysioterapeuten har kommunal avtale.",
     moreInformationURL: "",
     treatment: TREATMENT.behandlende,
-    contexts: [
-      { name: CONTEXT.forflytteMegHjemme, score: 1 },
-      { name: CONTEXT.forflytteMegUtenfor, score: 1 }
-    ],
+    contexts: [{ name: CONTEXT.forflytteMegUtenfor, score: 1 }],
     functions: [
       FUNCTION.redusertBevegelighet,
       FUNCTION.smerter,
@@ -425,11 +418,8 @@ export const services: Service[] = [
     description: "SE",
     moreInformationURL: "",
     treatment: TREATMENT.behandlende,
-    contexts: [
-      { name: CONTEXT.skaffeHobby, score: 2 },
-      { name: CONTEXT.treffeFolk, score: 2 }
-    ],
-    functions: [FUNCTION.nyBydelen]
+    contexts: [{ name: CONTEXT.skaffeHobby, score: 2 }],
+    functions: []
   },
   {
     id: "id:service/sangOgMusikkgruppe",
@@ -437,11 +427,8 @@ export const services: Service[] = [
     description: "SE",
     moreInformationURL: "",
     treatment: TREATMENT.behandlende,
-    contexts: [
-      { name: CONTEXT.skaffeHobby, score: 2 },
-      { name: CONTEXT.treffeFolk, score: 2 }
-    ],
-    functions: [FUNCTION.nyBydelen]
+    contexts: [{ name: CONTEXT.skaffeHobby, score: 2 }],
+    functions: []
   },
   {
     id: "id:service/sjakk",
@@ -449,11 +436,8 @@ export const services: Service[] = [
     description: "SE",
     moreInformationURL: "",
     treatment: TREATMENT.behandlende,
-    contexts: [
-      { name: CONTEXT.skaffeHobby, score: 2 },
-      { name: CONTEXT.treffeFolk, score: 2 }
-    ],
-    functions: [FUNCTION.nyBydelen]
+    contexts: [{ name: CONTEXT.skaffeHobby, score: 2 }],
+    functions: []
   },
   {
     id: "id:service/bridge",
@@ -461,11 +445,8 @@ export const services: Service[] = [
     description: "SE",
     moreInformationURL: "",
     treatment: TREATMENT.behandlende,
-    contexts: [
-      { name: CONTEXT.skaffeHobby, score: 2 },
-      { name: CONTEXT.treffeFolk, score: 2 }
-    ],
-    functions: [FUNCTION.nyBydelen]
+    contexts: [{ name: CONTEXT.skaffeHobby, score: 2 }],
+    functions: []
   },
   {
     id: "id:service/snekkerBod",
@@ -473,11 +454,8 @@ export const services: Service[] = [
     description: "SE",
     moreInformationURL: "",
     treatment: TREATMENT.behandlende,
-    contexts: [
-      { name: CONTEXT.skaffeHobby, score: 2 },
-      { name: CONTEXT.treffeFolk, score: 2 }
-    ],
-    functions: [FUNCTION.nyBydelen]
+    contexts: [{ name: CONTEXT.skaffeHobby, score: 2 }],
+    functions: []
   },
   {
     id: "id:service/hobbygruppeStovnerFrivilligsentral",
@@ -485,11 +463,8 @@ export const services: Service[] = [
     description: "Stovner Frivilligsentral",
     moreInformationURL: "",
     treatment: TREATMENT.behandlende,
-    contexts: [
-      { name: CONTEXT.skaffeHobby, score: 2 },
-      { name: CONTEXT.treffeFolk, score: 2 }
-    ],
-    functions: [FUNCTION.nyBydelen]
+    contexts: [{ name: CONTEXT.skaffeHobby, score: 2 }],
+    functions: []
   },
   {
     id: "id:service/stovnerFrivilligsentral",
