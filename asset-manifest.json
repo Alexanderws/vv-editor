@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/vv-editor/static/css/main.026d456b.chunk.css",
-    "main.js": "/vv-editor/static/js/main.b5d4136b.chunk.js",
-    "main.js.map": "/vv-editor/static/js/main.b5d4136b.chunk.js.map",
+    "main.js": "/vv-editor/static/js/main.ac751c80.chunk.js",
+    "main.js.map": "/vv-editor/static/js/main.ac751c80.chunk.js.map",
     "runtime-main.js": "/vv-editor/static/js/runtime-main.dbeaf663.js",
     "runtime-main.js.map": "/vv-editor/static/js/runtime-main.dbeaf663.js.map",
     "static/js/2.3c817819.chunk.js": "/vv-editor/static/js/2.3c817819.chunk.js",
     "static/js/2.3c817819.chunk.js.map": "/vv-editor/static/js/2.3c817819.chunk.js.map",
     "index.html": "/vv-editor/index.html",
-    "precache-manifest.3757517ec08c3b8ece5cbfe86f050336.js": "/vv-editor/precache-manifest.3757517ec08c3b8ece5cbfe86f050336.js",
+    "precache-manifest.d2d79f4610bb6efa94109d9488bd7940.js": "/vv-editor/precache-manifest.d2d79f4610bb6efa94109d9488bd7940.js",
     "service-worker.js": "/vv-editor/service-worker.js",
     "static/css/main.026d456b.chunk.css.map": "/vv-editor/static/css/main.026d456b.chunk.css.map",
     "static/media/fonts.css": "/vv-editor/static/media/OsloSans-RegularItalic.1b164fe0.woff"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.dbeaf663.js",
     "static/js/2.3c817819.chunk.js",
     "static/css/main.026d456b.chunk.css",
-    "static/js/main.b5d4136b.chunk.js"
+    "static/js/main.ac751c80.chunk.js"
   ]
 }
