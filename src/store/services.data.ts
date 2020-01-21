@@ -25,7 +25,11 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
     contexts: [{ name: CONTEXT.spiseTilpassetMat, score: 2 }],
-    functions: [FUNCTION.sykdom, FUNCTION.overvektig]
+    functions: [
+      FUNCTION.sykdom,
+      FUNCTION.dårligMatlyst,
+      FUNCTION.overvektig
+    ]
   },
   {
     id: "id:service/matkursForNybegynnere",
@@ -68,6 +72,7 @@ export const services: Service[] = [
       FUNCTION.dårligHukommelse,
       FUNCTION.forstårIkkeHandleNett,
       FUNCTION.smerter,
+      FUNCTION.huskerIkkeSpise,
       FUNCTION.redusertBevegelighet,
       FUNCTION.hjemmetTilrettelegging,
       FUNCTION.utendørsTilrettelegging,
@@ -106,7 +111,6 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
     contexts: [
-      { name: CONTEXT.treffeFolk, score: 1 },
       { name: CONTEXT.skaffeHobby, score: 1 },
       { name: CONTEXT.godFysiskForm, score: 2 }
     ],
@@ -211,10 +215,7 @@ export const services: Service[] = [
     moreInformationURL: "stovner frivillig / røde kors",
     treatment: TREATMENT.forebyggende,
     contexts: [{ name: CONTEXT.treffeFolk, score: 2 }],
-    functions: [
-      FUNCTION.klarerIkkeKommeUtAlene,
-      FUNCTION.psykiskeProblemer
-    ]
+    functions: [FUNCTION.klarerIkkeKommeUtAlene]
   },
   {
     id: "id:service/ledsagerbevis",
@@ -559,21 +560,17 @@ export const services: Service[] = [
       "Folkvang eldresenter er et populært samlingssted for deg over 60 år. Folkvang har åpent tirsdag og torsdag og er lokalisert sentralt på Høybråten. Her tilbys fallforebyggende gruppetrening og sosialt samvær over en matbit.",
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
-    contexts: [
-      { name: CONTEXT.godFysiskForm, score: 2 },
-      { name: CONTEXT.treffeFolk, score: 2 }
-    ],
+    contexts: [{ name: CONTEXT.treffeFolk, score: 2 }],
     functions: [FUNCTION.nyBydelen]
   },
   {
     id: "id:service/stovnerEldresenter",
-    name: "Stovener Eldresenter",
+    name: "Stovner Eldresenter",
     description:
       "Stovner eldresenter er et populært samlingssted for deg over 60 år.",
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
     contexts: [
-      { name: CONTEXT.godFysiskForm, score: 2 },
       { name: CONTEXT.treffeFolk, score: 2 },
       { name: CONTEXT.bidraSamfunn, score: 2 }
     ],

@@ -1,20 +1,5 @@
 import { FUNCTION } from "./functions.data";
 
-/*export const CONTEXT = Object.freeze({
-  kommeRundtHjemme: "kommeRundtHjemme",
-  kommeRundtUtenforHjemmet: "kommeRundtUtenforHjemmet",
-  kollektivTransport: "kollektivTransport",
-  handleMat: "handleMat",
-  brukeInternett: "brukeInternett",
-  deltaSamfunn: "deltaSamfunn",
-  hobby: "hobby",
-  fysiskAktivitet: "fysiskAktivitet",
-  sosialisere: "sosialisere",
-  kontrollTanker: "kontrollTanker",
-  endreKosthold: "endreKosthold",
-  personligStell: "personligStell"
-});*/
-
 export const CONTEXT = Object.freeze({
   spiseTilpassetMat: "spiseTilpassetMat",
   godFysiskForm: "godFysiskForm",
@@ -76,8 +61,8 @@ export const contexts: any[] = [
     textDefinite: "klare å spise",
     hindrances: [
       FUNCTION.dårligMatlyst,
-      FUNCTION.dårligSyn,
-      FUNCTION.huskerIkkeSpise
+      FUNCTION.huskerIkkeSpise,
+      FUNCTION.hjemmetTilrettelegging
     ]
   },
   {
@@ -109,8 +94,6 @@ export const contexts: any[] = [
     text: "Bruke internett, sosiale medier eller apper",
     textDefinite: "bruke internett, sosiale medier eller apper",
     hindrances: [
-      FUNCTION.dårligHukommelse,
-      FUNCTION.dårligSyn,
       FUNCTION.reddTrykkeFeil,
       FUNCTION.ikkeLærtDigitaleVerktøy
     ]

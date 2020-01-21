@@ -69,9 +69,7 @@ const AllServicesPage = (props: AllServicesProps) => {
   }, [location.pathname]);
 
   const ServiceList = () => {
-    const { services, getRankedServices, setActiveService } = useContext(
-      ServicesContext
-    );
+    const { services, setActiveService } = useContext(ServicesContext);
 
     const handleEditClicked = (service: Service) => {
       setActiveService(true, service);
