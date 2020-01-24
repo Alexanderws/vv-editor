@@ -6,6 +6,7 @@ import Header from "./components/header.component";
 import StartPage from "./pages/start.component";
 import EditServicePage from "./pages/edit-service.component";
 import AllServicesPage from "./pages/all-services.component";
+import TreeVisPage from "./pages/tree-vis.component";
 import ServiceRankingPage from "./pages/service-ranking.component";
 import ConfirmationBar from "./components/confirmation-bar.component";
 
@@ -52,6 +53,11 @@ const App: React.FC = () => {
               exact
               path="/service-ranking"
               render={props => <ServiceRankingPage {...props} />}
+            />
+            <Route
+              exact
+              path="/tree-vis"
+              render={props => <TreeVisPage {...props} />}
             />
           </Switch>
         </InnerContainer>

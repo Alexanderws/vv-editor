@@ -100,6 +100,16 @@ const StartPage = (props: StartProps) => {
             justeringer om noe ser galt ut.
           </CardDescription>
         </Card>
+        <Card
+          onClick={() => {
+            history.push("tree-vis");
+          }}
+        >
+          <CardTitle>Se strukturen til veiviseren visualisert</CardTitle>
+          <CardDescription>
+            Få en visuell oversikt mål, hindringer og tjenster.
+          </CardDescription>
+        </Card>
       </ButtonColumn>
     </Container>
   );
