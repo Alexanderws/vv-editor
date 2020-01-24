@@ -44,107 +44,107 @@ export const FUNCTION = Object.freeze({
 export const functions: any[] = [
   {
     id: FUNCTION.sykdom,
-    text: "jeg har en sykdom"
+    text: "Jeg har en sykdom"
   },
   {
     id: FUNCTION.dårligMatlyst,
-    text: "dårlig matlyst"
+    text: "Jeg har dårlig matlyst"
   },
   {
     id: FUNCTION.overvektig,
-    text: "jeg er overvektig"
+    text: "Jeg er overvektig"
   },
   {
     id: FUNCTION.ikkeKrefter,
-    text: "jeg har ikke krefter"
+    text: "Jeg har ikke krefter"
   },
   {
     id: FUNCTION.trøbleteVei,
-    text: "det er trøblete vei"
+    text: "Det er trøblete vei"
   },
   {
     id: FUNCTION.langtGå,
-    text: "det er for langt å gå"
+    text: "Det er for langt å gå"
   },
   {
     id: FUNCTION.reddFalle,
-    text: "jeg er redd for å falle"
+    text: "Jeg er redd for å falle"
   },
   {
     id: FUNCTION.psykiskeProblemer,
-    text: "jeg har psykiske problemer"
+    text: "Jeg har psykiske problemer"
   },
   {
     id: FUNCTION.dårligHukommelse,
-    text: "jeg har dårlig hukommelse"
+    text: "Jeg har dårlig hukommelse"
   },
   {
     id: FUNCTION.forstårIkkeHandleNett,
-    text: "jeg forstår ikke hvordan man handler på nett"
+    text: "Jeg forstår ikke hvordan man handler på nett"
   },
   {
     id: FUNCTION.dårligSyn,
-    text: "jeg har dårlig syn"
+    text: "Jeg har dårlig syn"
   },
   {
     id: FUNCTION.huskerIkkeSpise,
-    text: "jeg husker ikke å spise"
+    text: "Jeg husker ikke å spise"
   },
   {
     id: FUNCTION.redusertBevegelighet,
-    text: "redusert bevegelighet"
+    text: "Jeg har redusert bevegelighet"
   },
   {
     id: FUNCTION.smerter,
-    text: "jeg har smerter"
+    text: "Jeg har smerter"
   },
   {
     id: FUNCTION.reddTrykkeFeil,
-    text: "jeg er redd for å trykke feil"
+    text: "Jeg er redd for å trykke feil"
   },
   {
     id: FUNCTION.ikkeLærtDigitaleVerktøy,
-    text: "jeg har ikke lært å bruke digitale verktøy"
+    text: "Jeg har ikke lært å bruke digitale verktøy"
   },
   {
     id: FUNCTION.hjemmetTilrettelegging,
-    text: "hjemmet mitt mangler tilrettelegging"
+    text: "Hjemmet mitt mangler tilrettelegging"
   },
   {
     id: FUNCTION.utendørsTilrettelegging,
-    text: "det mangler utendørs tilrettelegging"
+    text: "Det mangler utendørs tilrettelegging"
   },
   {
     id: FUNCTION.reddGåMegBort,
-    text: "jeg er redd for å gå meg bort"
+    text: "Jeg er redd for å gå meg bort"
   },
   {
     id: FUNCTION.langtHoldeplassen,
-    text: "det er for langt å gå til holdeplassen"
+    text: "Det er for langt å gå til holdeplassen"
   },
   {
     id: FUNCTION.kommerIkkeInnBussen,
-    text: "jeg kommer ikke inn på bussen"
+    text: "Jeg kommer ikke inn på bussen"
   },
   {
     id: FUNCTION.forstårIkkeKjøperBillett,
-    text: "jeg forstår ikke hvordan man kjøper billett"
+    text: "Jeg forstår ikke hvordan man kjøper billett"
   },
   {
     id: FUNCTION.klarerIkkeKommeUtAlene,
-    text: "klarer ikke å komme ut alene"
+    text: "Klarer ikke å komme ut alene"
   },
   {
     id: FUNCTION.nyBydelen,
-    text: "jeg er ny i bydelen"
+    text: "Jeg er ny i bydelen"
   },
   {
     id: FUNCTION.vondeTanker,
-    text: "jeg sliter med vonde og triste tanker"
+    text: "Jeg sliter med vonde og triste tanker"
   },
   {
     id: FUNCTION.indreUro,
-    text: "jeg opplever angst og indre uro"
+    text: "Jeg opplever angst og indre uro"
   }
 ];
 
