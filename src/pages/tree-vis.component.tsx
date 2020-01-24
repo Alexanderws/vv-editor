@@ -244,12 +244,14 @@ const TreeVisPage = (props: TreeVisProps) => {
         }}
       >
         <Tree
+          translate={{ x: 20, y: 590 }}
           data={data}
           initialDepth={1}
+          separation={{ siblings: 0.6 }}
           shouldCollapseNeighborNodes={true}
           depthFactor={250}
-          zoom={0.8}
-          scaleExtent={{ min: 0.6, max: 1 }}
+          zoom={0.9}
+          scaleExtent={{ min: 0.9, max: 0.9 }}
           styles={{
             links: {
               stroke: "#F9C66B",
