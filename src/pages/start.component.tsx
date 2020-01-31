@@ -50,7 +50,9 @@ const CardDescription = styled.p`
 const StartPage = (props: StartProps) => {
   const { history, location } = props;
   const { userName } = useContext(AppContext);
-  const { setActiveService } = useContext(ServicesContext);
+  const { setActiveService, logNewServices } = useContext(
+    ServicesContext
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -109,6 +111,9 @@ const StartPage = (props: StartProps) => {
           <CardDescription>
             Få en visuell oversikt mål, hindringer og tjenster.
           </CardDescription>
+        </Card>
+        <Card onClick={logNewServices}>
+          <CardTitle>List ut alle nye tjenester</CardTitle>
         </Card>
       </ButtonColumn>
     </Container>

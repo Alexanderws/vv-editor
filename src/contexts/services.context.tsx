@@ -13,6 +13,7 @@ type ContextProps = {
   getRankedServices: any;
   addService: any;
   updateService: any;
+  logNewServices: any;
 };
 
 interface ServiceContextStateProps {
@@ -28,7 +29,8 @@ export const ServicesContext = React.createContext<ContextProps>({
   activeService: null,
   setActiveService: () => {},
   addService: () => {},
-  updateService: () => {}
+  updateService: () => {},
+  logNewServices: () => {}
 });
 ServicesContext.displayName = "ServicesContext";
 
@@ -69,13 +71,15 @@ export const ServicesContextProvider = (props: any) => {
 
   const getRankedServices = (
     contextName: string,
-    functionsList: string[]
+    functionsList: string[],
+    bydelName: string
   ) => {
     const HIGH_RELEVANCE_SCORE = 1000;
     const LOW_RELEVANCE_SCORE = 500;
     const HINDRANCE_SCORE = 1;
 
     var relevantServices = state.services
+      .filter((service: any) => service.bydel.includes(bydelName))
       .filter((service: any) =>
         service.contexts.some((e: any) => e.name === contextName)
       )
@@ -122,6 +126,14 @@ export const ServicesContextProvider = (props: any) => {
     return scoredServices.sort((a: any, b: any) => b.score - a.score);
   };
 
+  const logNewServices = () => {
+    console.log(
+      state.services.filter((service: any) =>
+        service.bydel.includes("Gamle Oslo")
+      )
+    );
+  };
+
   const initialContext = {
     services: state.services,
     getRankedServices: getRankedServices,
@@ -129,7 +141,8 @@ export const ServicesContextProvider = (props: any) => {
     activeService: state.activeService,
     setActiveService: setActiveService,
     addService: addService,
-    updateService: updateService
+    updateService: updateService,
+    logNewServices: logNewServices
   };
 
   return (

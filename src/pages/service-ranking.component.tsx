@@ -5,7 +5,7 @@ import styled from "styled-components";
 import ActionButton from "../components/action-button.component";
 import Card from "../components/card.component";
 
-import { Service } from "../store/services.data";
+import { Service, bydeler } from "../store/services.data";
 import { contexts } from "../store/contexts.data";
 import { functions } from "../store/functions.data";
 import { ServicesContext } from "../contexts/services.context";
@@ -89,7 +89,8 @@ const ServiceRankingPage = (props: ServiceRankingProps) => {
   const { history, location } = props;
   const [state, setState] = useState<any>({
     chosenContext: contexts[0].id,
-    chosenFunctions: []
+    chosenFunctions: [],
+    chosenBydel: bydeler[0]
   });
 
   useEffect(() => {
@@ -103,6 +104,15 @@ const ServiceRankingPage = (props: ServiceRankingProps) => {
     setState((prevState: any) => ({
       ...prevState,
       chosenContext: value,
+      chosenFunctions: []
+    }));
+  };
+
+  const handleBydelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setState((prevState: any) => ({
+      ...prevState,
+      chosenBydel: value,
       chosenFunctions: []
     }));
   };
@@ -124,6 +134,35 @@ const ServiceRankingPage = (props: ServiceRankingProps) => {
         chosenFunctions: [...prevState.chosenFunctions, value]
       }));
     }
+  };
+
+  const BydelList = () => {
+    return (
+      <React.Fragment>
+        {bydeler.map((bydelName: string) => {
+          return (
+            <label
+              key={bydelName}
+              style={{
+                display: "flex",
+                maxWidth: "320px",
+                marginBottom: "8px"
+              }}
+            >
+              <input
+                style={{ marginRight: "4px" }}
+                type="radio"
+                name={bydelName}
+                value={bydelName}
+                checked={state.chosenBydel === bydelName}
+                onChange={handleBydelChange}
+              />
+              {bydelName}
+            </label>
+          );
+        })}
+      </React.Fragment>
+    );
   };
 
   const ContextList = () => {
@@ -203,7 +242,8 @@ const ServiceRankingPage = (props: ServiceRankingProps) => {
       <ServiceColumn>
         {getRankedServices(
           state.chosenContext,
-          state.chosenFunctions
+          state.chosenFunctions,
+          state.chosenBydel
         ).map((service: any) => (
           <Card key={service.id}>
             <CardTitle>{service.name}</CardTitle>
@@ -241,6 +281,9 @@ const ServiceRankingPage = (props: ServiceRankingProps) => {
       <RowContainer>
         <OptionsColumn>
           <Card>
+            <CardLabel>Bydel</CardLabel>
+            <BydelList />
+            <Spacer />
             <CardLabel>Mål</CardLabel>
             <ContextList />
             <Spacer />

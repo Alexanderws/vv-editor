@@ -6,7 +6,7 @@ import ActionButton from "../components/action-button.component";
 
 import { AppContext } from "../contexts/app.context";
 import { ServicesContext } from "../contexts/services.context";
-import { Service, TREATMENT } from "../store/services.data";
+import { Service, TREATMENT, bydeler } from "../store/services.data";
 import { contexts } from "../store/contexts.data";
 import { functions } from "../store/functions.data";
 
@@ -15,6 +15,14 @@ interface EditServiceProps extends RouteComponentProps {}
 const ColumnContainer = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const FunctionContainer = styled.label`
+  padding: 8px;
+  display: flex;
+  background-color: #f1f1f1;
+  margin-bottom: 4px;
+  align-items: center;
 `;
 
 const RowContainer = styled.div`
@@ -49,18 +57,6 @@ const FormContainer = styled.div`
   margin-top: 40px;
   margin-bottom: 40px;
   max-width: 700px;
-`;
-
-const ContextContainerOld = styled.div`
-  padding: 10px 5px;
-  max-height: 210px;
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-flow: column wrap;
-  align-content: stretch;
-  background-color: #f1f1f1;
 `;
 
 const ContextContainer = styled.div`
@@ -110,32 +106,6 @@ const ErrorMessage = styled.div`
   padding: 8px 8px 6px;
 `;
 
-const SegmentedButton = styled.input`
-  height: 40px;
-  line-height: 40px;
-  border: solid 1px black;
-  font-size: 1rem;
-  min-width: 0;
-  text-transform: capitalize;
-  background-color: white;
-  font-weight: 500;
-  cursor: pointer;
-  flex-grow: 1;
-  &:first-child {
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-    border-right: none;
-  }
-  &:last-child {
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-left: none;
-  }
-
-  ${({ defaultChecked }) =>
-    defaultChecked ? "color: white; background-color: black;" : ""};
-`;
-
 const SegmentedButtonSmall = styled.input`
   height: 28px;
   line-height: 28px;
@@ -177,25 +147,6 @@ const OverviewForm = ({
   formErrors,
   setFormErrors
 }: FormProps) => {
-  const handleContextChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const value = e.currentTarget.value;
-    if (form.contexts.includes(value)) {
-      setForm({
-        ...form,
-        contexts: form.contexts.filter(
-          (context: string) => context !== value
-        )
-      });
-    } else {
-      setForm({
-        ...form,
-        contexts: [...form.contexts, value]
-      });
-    }
-  };
-
   const handleContextClick = (
     e: React.MouseEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -251,6 +202,23 @@ const OverviewForm = ({
     });
   };
 
+  const handleBydelClick = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const targetName = e.currentTarget.value;
+    if (form.bydel.includes(targetName)) {
+      setForm({
+        ...form,
+        bydel: form.bydel.filter((funcObj: any) => funcObj !== targetName)
+      });
+    } else {
+      setForm({
+        ...form,
+        bydel: [...form.bydel, targetName]
+      });
+    }
+  };
+
   return (
     <React.Fragment>
       <FormGroup>
@@ -293,6 +261,37 @@ const OverviewForm = ({
         />
         {formErrors.moreInformationURL ? (
           <ErrorMessage>Du må angi en lenke for tilbudet</ErrorMessage>
+        ) : (
+          ""
+        )}
+      </FormGroup>
+      <FormGroup>
+        <Label htmlFor="bydel">Tilbudet finnes i følgende bydeler</Label>
+        {bydeler.map((bydelName: string) => {
+          return (
+            <FunctionContainer
+              key={bydelName}
+              style={{ alignItems: "baseline" }}
+            >
+              <input
+                id={bydelName}
+                type="checkbox"
+                name="contexts"
+                value={bydelName}
+                checked={form.bydel.includes(bydelName)}
+                onChange={handleBydelClick}
+                style={{
+                  marginRight: "8px"
+                }}
+              />
+              {bydelName}
+            </FunctionContainer>
+          );
+        })}
+        {formErrors.bydel ? (
+          <ErrorMessage>
+            Du må angi minst en bydel for tilbudet
+          </ErrorMessage>
         ) : (
           ""
         )}
@@ -415,14 +414,6 @@ const ObstacleForm = ({ form, setForm }: FormProps) => {
     margin-left: 4px;
   `;
 
-  const FunctionContainer = styled.label`
-    padding: 8px;
-    display: flex;
-    background-color: #f1f1f1;
-    margin-bottom: 4px;
-    align-items: center;
-  `;
-
   const handleHindranceClick = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -530,7 +521,8 @@ const EditServicePage = (props: EditServiceProps) => {
     treatment: false,
     moreInformationURL: false,
     contexts: false,
-    functions: false
+    functions: false,
+    bydel: false
   });
   const [form, setForm] = useState<Service>(
     isEditing
@@ -542,7 +534,8 @@ const EditServicePage = (props: EditServiceProps) => {
           treatment: TREATMENT.kompenserende,
           moreInformationURL: "",
           contexts: [],
-          functions: []
+          functions: [],
+          bydel: []
         }
   );
   const [currentPage, setCurrentPage] = useState(1);
@@ -555,7 +548,8 @@ const EditServicePage = (props: EditServiceProps) => {
     setFormErrors({
       name: form.name ? false : true,
       treatment: form.treatment ? false : true,
-      contexts: form.contexts.length ? false : true
+      contexts: form.contexts.length ? false : true,
+      bydel: form.bydel.length ? false : true
     });
 
     return form.name && form.treatment && form.contexts.length;

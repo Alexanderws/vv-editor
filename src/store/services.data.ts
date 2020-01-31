@@ -7,6 +7,13 @@ export const TREATMENT = Object.freeze({
   forebyggende: "forebyggende"
 });
 
+export const BYDEL = Object.freeze({
+  stovner: "Stovner",
+  gamleOslo: "Gamle Oslo"
+});
+
+export const bydeler = [BYDEL.stovner, BYDEL.gamleOslo];
+
 export interface Service {
   id: string;
   name: string;
@@ -15,6 +22,7 @@ export interface Service {
   treatment: string;
   contexts: any[];
   functions: string[];
+  bydel: string[];
 }
 
 export const services: Service[] = [
@@ -29,7 +37,8 @@ export const services: Service[] = [
       FUNCTION.sykdom,
       FUNCTION.dårligMatlyst,
       FUNCTION.overvektig
-    ]
+    ],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/matkursForNybegynnere",
@@ -38,7 +47,8 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
     contexts: [{ name: CONTEXT.skaffeHobby, score: 2 }],
-    functions: []
+    functions: [],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/seniorveileder",
@@ -78,7 +88,8 @@ export const services: Service[] = [
       FUNCTION.kommerIkkeInnBussen,
       FUNCTION.langtHoldeplassen,
       FUNCTION.nyBydelen
-    ]
+    ],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/gratisTrening",
@@ -87,7 +98,8 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
     contexts: [{ name: CONTEXT.godFysiskForm, score: 1 }],
-    functions: []
+    functions: [],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/linedanceKurs",
@@ -99,7 +111,8 @@ export const services: Service[] = [
       { name: CONTEXT.godFysiskForm, score: 2 },
       { name: CONTEXT.skaffeHobby, score: 2 }
     ],
-    functions: []
+    functions: [],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/fallforebyggendeTreningStovnerEldresenter",
@@ -116,7 +129,8 @@ export const services: Service[] = [
       FUNCTION.redusertBevegelighet,
       FUNCTION.reddFalle,
       FUNCTION.langtGå
-    ]
+    ],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/frivilligNo",
@@ -125,7 +139,8 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
     contexts: [{ name: CONTEXT.bidraSamfunn, score: 2 }],
-    functions: []
+    functions: [],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/rødeKors",
@@ -134,7 +149,8 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
     contexts: [{ name: CONTEXT.bidraSamfunn, score: 2 }],
-    functions: []
+    functions: [],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/fallforebyggendeTreningFolkvang",
@@ -151,7 +167,8 @@ export const services: Service[] = [
       FUNCTION.redusertBevegelighet,
       FUNCTION.reddFalle,
       FUNCTION.langtGå
-    ]
+    ],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/stovner60Pluss",
@@ -160,7 +177,8 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
     contexts: [{ name: CONTEXT.godFysiskForm, score: 2 }],
-    functions: []
+    functions: [],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/stovnerStyrke60Pluss",
@@ -169,7 +187,8 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
     contexts: [{ name: CONTEXT.godFysiskForm, score: 2 }],
-    functions: []
+    functions: [],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/vestliILVolleyball60Pluss",
@@ -178,7 +197,8 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
     contexts: [{ name: CONTEXT.godFysiskForm, score: 2 }],
-    functions: []
+    functions: [],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/tobakkavvenning",
@@ -187,7 +207,8 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
     contexts: [{ name: CONTEXT.slutteRøykSnus, score: 2 }],
-    functions: []
+    functions: [],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/varerBestiltHjem",
@@ -201,7 +222,8 @@ export const services: Service[] = [
       FUNCTION.trøbleteVei,
       FUNCTION.langtGå,
       FUNCTION.reddFalle
-    ]
+    ],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/besøkstjeneste",
@@ -211,7 +233,8 @@ export const services: Service[] = [
     moreInformationURL: "stovner frivillig / røde kors",
     treatment: TREATMENT.forebyggende,
     contexts: [{ name: CONTEXT.treffeFolk, score: 2 }],
-    functions: [FUNCTION.klarerIkkeKommeUtAlene]
+    functions: [FUNCTION.klarerIkkeKommeUtAlene],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/ledsagerbevis",
@@ -227,7 +250,8 @@ export const services: Service[] = [
     functions: [
       FUNCTION.kommerIkkeInnBussen,
       FUNCTION.redusertBevegelighet
-    ]
+    ],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/raskPsykiskHelsehjelp",
@@ -246,7 +270,8 @@ export const services: Service[] = [
       FUNCTION.psykiskeProblemer,
       FUNCTION.indreUro,
       FUNCTION.vondeTanker
-    ]
+    ],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/trygghetsalarm",
@@ -256,7 +281,8 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.behandlende,
     contexts: [{ name: CONTEXT.forflytteMegHjemme, score: 2 }],
-    functions: [FUNCTION.reddFalle, FUNCTION.dårligHukommelse]
+    functions: [FUNCTION.reddFalle, FUNCTION.dårligHukommelse],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/hjelpemidlerForflytning",
@@ -276,7 +302,8 @@ export const services: Service[] = [
       FUNCTION.hjemmetTilrettelegging,
       FUNCTION.utendørsTilrettelegging,
       FUNCTION.redusertBevegelighet
-    ]
+    ],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/hjelpemidlerBad",
@@ -293,7 +320,8 @@ export const services: Service[] = [
       FUNCTION.redusertBevegelighet,
       FUNCTION.reddFalle,
       FUNCTION.ikkeKrefter
-    ]
+    ],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/hjelpemidlerDaglig",
@@ -308,7 +336,8 @@ export const services: Service[] = [
       FUNCTION.ikkeKrefter,
       FUNCTION.reddFalle,
       FUNCTION.redusertBevegelighet
-    ]
+    ],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/balansekurs",
@@ -322,7 +351,8 @@ export const services: Service[] = [
       { name: CONTEXT.forflytteMegHjemme, score: 2 },
       { name: CONTEXT.treffeFolk, score: 1 }
     ],
-    functions: [FUNCTION.redusertBevegelighet, FUNCTION.reddFalle]
+    functions: [FUNCTION.redusertBevegelighet, FUNCTION.reddFalle],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/vurderingsteam",
@@ -347,7 +377,8 @@ export const services: Service[] = [
       FUNCTION.hjemmetTilrettelegging,
       FUNCTION.utendørsTilrettelegging,
       FUNCTION.reddGåMegBort
-    ]
+    ],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/digitalSenior",
@@ -366,7 +397,8 @@ export const services: Service[] = [
       FUNCTION.reddTrykkeFeil,
       FUNCTION.ikkeLærtDigitaleVerktøy,
       FUNCTION.forstårIkkeKjøperBillett
-    ]
+    ],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/dataHjelpDeichman",
@@ -384,7 +416,8 @@ export const services: Service[] = [
       FUNCTION.reddTrykkeFeil,
       FUNCTION.ikkeLærtDigitaleVerktøy,
       FUNCTION.forstårIkkeKjøperBillett
-    ]
+    ],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/fysioterapeut",
@@ -398,7 +431,8 @@ export const services: Service[] = [
       FUNCTION.redusertBevegelighet,
       FUNCTION.smerter,
       FUNCTION.reddFalle
-    ]
+    ],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/rosaSykler",
@@ -410,7 +444,8 @@ export const services: Service[] = [
       { name: CONTEXT.forflytteMegUtenfor, score: 2 },
       { name: CONTEXT.treffeFolk, score: 2 }
     ],
-    functions: [FUNCTION.klarerIkkeKommeUtAlene]
+    functions: [FUNCTION.klarerIkkeKommeUtAlene],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/leseGruppe",
@@ -419,7 +454,8 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.behandlende,
     contexts: [{ name: CONTEXT.skaffeHobby, score: 2 }],
-    functions: []
+    functions: [],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/sangOgMusikkgruppe",
@@ -428,7 +464,8 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.behandlende,
     contexts: [{ name: CONTEXT.skaffeHobby, score: 2 }],
-    functions: []
+    functions: [],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/sjakk",
@@ -437,7 +474,8 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.behandlende,
     contexts: [{ name: CONTEXT.skaffeHobby, score: 2 }],
-    functions: []
+    functions: [],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/bridge",
@@ -446,7 +484,8 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.behandlende,
     contexts: [{ name: CONTEXT.skaffeHobby, score: 2 }],
-    functions: []
+    functions: [],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/snekkerBod",
@@ -455,7 +494,8 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.behandlende,
     contexts: [{ name: CONTEXT.skaffeHobby, score: 2 }],
-    functions: []
+    functions: [],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/hobbygruppeStovnerFrivilligsentral",
@@ -464,7 +504,8 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.behandlende,
     contexts: [{ name: CONTEXT.skaffeHobby, score: 2 }],
-    functions: []
+    functions: [],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/stovnerFrivilligsentral",
@@ -477,7 +518,8 @@ export const services: Service[] = [
       { name: CONTEXT.treffeFolk, score: 2 },
       { name: CONTEXT.bidraSamfunn, score: 2 }
     ],
-    functions: [FUNCTION.nyBydelen]
+    functions: [FUNCTION.nyBydelen],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/transportTjeneste",
@@ -491,7 +533,8 @@ export const services: Service[] = [
       FUNCTION.redusertBevegelighet,
       FUNCTION.langtHoldeplassen,
       FUNCTION.kommerIkkeInnBussen
-    ]
+    ],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/følgetjeneste",
@@ -509,7 +552,8 @@ export const services: Service[] = [
       FUNCTION.trøbleteVei,
       FUNCTION.langtGå,
       FUNCTION.reddFalle
-    ]
+    ],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/jesperudhuset",
@@ -526,7 +570,8 @@ export const services: Service[] = [
       FUNCTION.psykiskeProblemer,
       FUNCTION.vondeTanker,
       FUNCTION.indreUro
-    ]
+    ],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/eldresenterFolkvang",
@@ -536,7 +581,8 @@ export const services: Service[] = [
     moreInformationURL: "",
     treatment: TREATMENT.forebyggende,
     contexts: [{ name: CONTEXT.treffeFolk, score: 2 }],
-    functions: [FUNCTION.nyBydelen]
+    functions: [FUNCTION.nyBydelen],
+    bydel: [BYDEL.stovner]
   },
   {
     id: "id:service/stovnerEldresenter",
@@ -549,6 +595,7 @@ export const services: Service[] = [
       { name: CONTEXT.treffeFolk, score: 2 },
       { name: CONTEXT.bidraSamfunn, score: 2 }
     ],
-    functions: [FUNCTION.nyBydelen]
+    functions: [FUNCTION.nyBydelen],
+    bydel: [BYDEL.stovner]
   }
 ];
