@@ -109,7 +109,7 @@ const StartPage = (props: StartProps) => {
         >
           <CardTitle>Se strukturen til veiviseren visualisert</CardTitle>
           <CardDescription>
-            Få en visuell oversikt mål, hindringer og tjenster.
+            Få en visuell oversikt mål, hindringer og tjenester.
           </CardDescription>
         </Card>
         <Card onClick={logNewServices}>

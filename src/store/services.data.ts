@@ -53,8 +53,10 @@ export const services: Service[] = [
   {
     id: "id:service/seniorveileder",
     name: "Seniorveileder",
-    description: "",
-    moreInformationURL: "",
+    description:
+      "Tilbudet er for deg som ønsker besøk eller samtale om hverdagsliv, fysisk aktivitet, sosialt nettverk og trygghet i hjemmet. Du kan ta direkte kontakt med bydelens Seniorveileder.",
+    moreInformationURL:
+      "https://www.oslo.kommune.no/helse-og-omsorg/eldreomsorg/helsefremmende-tilbud-for-eldre/seniorveileder/#shortname=bsr",
     treatment: TREATMENT.forebyggende,
     contexts: [
       { name: CONTEXT.spiseTilpassetMat, score: 2 },
@@ -89,7 +91,7 @@ export const services: Service[] = [
       FUNCTION.langtHoldeplassen,
       FUNCTION.nyBydelen
     ],
-    bydel: [BYDEL.stovner]
+    bydel: [BYDEL.stovner, BYDEL.gamleOslo]
   },
   {
     id: "id:service/gratisTrening",
@@ -251,7 +253,7 @@ export const services: Service[] = [
       FUNCTION.kommerIkkeInnBussen,
       FUNCTION.redusertBevegelighet
     ],
-    bydel: [BYDEL.stovner]
+    bydel: [BYDEL.stovner, BYDEL.gamleOslo]
   },
   {
     id: "id:service/raskPsykiskHelsehjelp",
@@ -271,7 +273,7 @@ export const services: Service[] = [
       FUNCTION.indreUro,
       FUNCTION.vondeTanker
     ],
-    bydel: [BYDEL.stovner]
+    bydel: [BYDEL.stovner, BYDEL.gamleOslo]
   },
   {
     id: "id:service/trygghetsalarm",
@@ -282,7 +284,7 @@ export const services: Service[] = [
     treatment: TREATMENT.behandlende,
     contexts: [{ name: CONTEXT.forflytteMegHjemme, score: 2 }],
     functions: [FUNCTION.reddFalle, FUNCTION.dårligHukommelse],
-    bydel: [BYDEL.stovner]
+    bydel: [BYDEL.stovner, BYDEL.gamleOslo]
   },
   {
     id: "id:service/hjelpemidlerForflytning",
@@ -303,7 +305,7 @@ export const services: Service[] = [
       FUNCTION.utendørsTilrettelegging,
       FUNCTION.redusertBevegelighet
     ],
-    bydel: [BYDEL.stovner]
+    bydel: [BYDEL.stovner, BYDEL.gamleOslo]
   },
   {
     id: "id:service/hjelpemidlerBad",
@@ -321,7 +323,7 @@ export const services: Service[] = [
       FUNCTION.reddFalle,
       FUNCTION.ikkeKrefter
     ],
-    bydel: [BYDEL.stovner]
+    bydel: [BYDEL.stovner, BYDEL.gamleOslo]
   },
   {
     id: "id:service/hjelpemidlerDaglig",
@@ -337,7 +339,7 @@ export const services: Service[] = [
       FUNCTION.reddFalle,
       FUNCTION.redusertBevegelighet
     ],
-    bydel: [BYDEL.stovner]
+    bydel: [BYDEL.stovner, BYDEL.gamleOslo]
   },
   {
     id: "id:service/balansekurs",
@@ -378,7 +380,7 @@ export const services: Service[] = [
       FUNCTION.utendørsTilrettelegging,
       FUNCTION.reddGåMegBort
     ],
-    bydel: [BYDEL.stovner]
+    bydel: [BYDEL.stovner, BYDEL.gamleOslo]
   },
   {
     id: "id:service/digitalSenior",
@@ -398,7 +400,7 @@ export const services: Service[] = [
       FUNCTION.ikkeLærtDigitaleVerktøy,
       FUNCTION.forstårIkkeKjøperBillett
     ],
-    bydel: [BYDEL.stovner]
+    bydel: [BYDEL.stovner, BYDEL.gamleOslo]
   },
   {
     id: "id:service/dataHjelpDeichman",
@@ -432,7 +434,7 @@ export const services: Service[] = [
       FUNCTION.smerter,
       FUNCTION.reddFalle
     ],
-    bydel: [BYDEL.stovner]
+    bydel: [BYDEL.stovner, BYDEL.gamleOslo]
   },
   {
     id: "id:service/rosaSykler",
@@ -597,5 +599,258 @@ export const services: Service[] = [
     ],
     functions: [FUNCTION.nyBydelen],
     bydel: [BYDEL.stovner]
+  },
+  {
+    id: "id:service/linkKontoret",
+    name: "Link-kontoret",
+    description:
+      "Vi er et informasjons- og servicekontor for bydelens befolkning. Kontoret er betjent av medarbeidere med ulik etnisk bakgrunn og som snakker forskjellige språk i tillegg til norsk. Vi kan bistå deg med å få svar på ulike spørsmål og utfordringer du har når du skal ha kontakt med bydelens tjensteappart.",
+    treatment: "kompenserende",
+    moreInformationURL:
+      "https://www.oslo.kommune.no/bydeler/bydel-gamle-oslo/link-kontoret/#gref",
+    contexts: [{ name: CONTEXT.treffeFolk, score: 2 }],
+    functions: [
+      FUNCTION.psykiskeProblemer,
+      FUNCTION.dårligHukommelse,
+      FUNCTION.klarerIkkeKommeUtAlene,
+      FUNCTION.nyBydelen
+    ],
+    bydel: [BYDEL.gamleOslo]
+  },
+  {
+    id: "id:service/stovnerEldresenter",
+    name: "Tøyen Frivilligsentral",
+    description:
+      "Du finner oss på Aktivitetshuset K1 som er bydelens samfunnshus/kulturhus.Til daglig jobber vi med styrking og utvikling av nærmiljøet. Vi driver lokalt nettverksarbeid og jobber med kopling av frivillige organisasjoner, sosiale entreprenører, bydelens tjenester og befolkningen forøvrig.",
+    moreInformationURL: "https://frivillig.no/tyen-frivilligsentral",
+    treatment: TREATMENT.forebyggende,
+    contexts: [{ name: CONTEXT.bidraSamfunn, score: 2 }],
+    functions: [],
+    bydel: [BYDEL.gamleOslo]
+  },
+  {
+    id: "id:service/gamleOsloFrivilligsentral",
+    name: "Gamle Oslo Frivilligsentral",
+    description:
+      "Hos oss kan du delta på en av sentralens aktiviteter, enten som deltagere eller som medhjelper. Frivilligsentralen er kort sagt en møteplass som formidler kontakt mellom mennesker i lokalmiljøet - noen trenger hjelp og andre ønsker å hjelpe.",
+    moreInformationURL: "https://gamle-oslo.frivilligsentral.no/",
+    treatment: TREATMENT.forebyggende,
+    contexts: [
+      { name: CONTEXT.treffeFolk, score: 2 },
+      { name: CONTEXT.bedrePsykisk, score: 2 }
+    ],
+    functions: [FUNCTION.nyBydelen],
+    bydel: [BYDEL.gamleOslo]
+  },
+  {
+    id: "id:service/gamleOsloHusflidlag",
+    name: "Gamle Oslo Husflidlag",
+    description:
+      "Gamle Oslo Husflidslag ble stiftet i 2000. Vårt mål er å spre skaperglede og kunnskap om husflidsteknikker. Vi har ulike aktiviteter og vi arrangerer også teammøter. Ta en titt på vår kalender og se om du finner noe du liker.",
+    moreInformationURL:
+      "http://www.husflid.no/lokal_og_fylkeslag/oslo/lokallag/gamle_oslo_husflidslag",
+    treatment: TREATMENT.forebyggende,
+    contexts: [{ name: CONTEXT.skaffeHobby, score: 2 }],
+    functions: [],
+    bydel: [BYDEL.gamleOslo]
+  },
+  {
+    id: "id:service/treningstilbudPåK1",
+    name: "Treningstilbud på K1",
+    description:
+      "Her hos oss finner du ulike treningstilbud som eks yoga, pilates, meditasjon og dans. Ta en titt på vår aktivitetskalender og la deg friste.",
+    moreInformationURL: "https://www.aktivitetshusetk1.no/hvaskjerher",
+    treatment: TREATMENT.forebyggende,
+    contexts: [{ name: CONTEXT.godFysiskForm, score: 2 }],
+    functions: [],
+    bydel: [BYDEL.gamleOslo]
+  },
+  {
+    id: "id:service/aktivitetshusetK1",
+    name: "Aktivitetshuset K1",
+    description:
+      "Aktivitetshuset K1 (også bare kalt «K1») er en åpen møteplass for nabolaget på Tøyen. Våre aktiviteter fremmer folkehelse og hjelper deg med å opprettholde god helse. I tillegg har vi fokus på at Aktivitetshuset bidrar til at Tøyen blir et mer inkluderende nabolag med et godt samhold og engasjement blant befolkningen.",
+    moreInformationURL: "https://www.aktivitetshusetk1.no/",
+    treatment: TREATMENT.forebyggende,
+    contexts: [{ name: CONTEXT.treffeFolk, score: 2 }],
+    functions: [FUNCTION.nyBydelen],
+    bydel: [BYDEL.gamleOslo]
+  },
+  {
+    id: "id:service/motivasjonsgruppen",
+    name: "Motivasjonsgruppen",
+    description:
+      "Vi er til for deg som ønsker å endre levevaner sammen med andre. Vi møtes til samling hver torsdag fra klokken 13:00 – 14:30 til felles trening, samtaler rundt et aktuelt tema og felles gåturer.",
+    moreInformationURL:
+      "https://www.oslo.kommune.no/natur-kultur-og-fritid/gronland-flerkulturelle-seniorsenter/#gref",
+    treatment: TREATMENT.forebyggende,
+    contexts: [
+      { name: CONTEXT.spiseTilpassetMat, score: 2 },
+      { name: CONTEXT.godFysiskForm, score: 2 },
+      { name: CONTEXT.bedrePsykisk, score: 1 }
+    ],
+    functions: [
+      FUNCTION.vondeTanker,
+      FUNCTION.dårligMatlyst,
+      FUNCTION.overvektig
+    ],
+    bydel: [BYDEL.gamleOslo]
+  },
+  {
+    id: "id:service/datakafe",
+    name: "Datakafe",
+    description:
+      "Tilbudet er for deg som ønsker å lære og bli tryggere på bruk av data og mobiltelefon. Vi gir deg hjelp og veiledning. Vi holder til i Hagestua hver onsdag fra 11.00 - 12.30",
+    moreInformationURL:
+      "https://www.oslo.kommune.no/natur-kultur-og-fritid/gronland-flerkulturelle-seniorsenter/#gref",
+    treatment: TREATMENT.forebyggende,
+    contexts: [
+      { name: CONTEXT.brukeInternett, score: 2 },
+      { name: CONTEXT.handleMat, score: 1 },
+      { name: CONTEXT.brukeKollektivtransport, score: 1 }
+    ],
+    functions: [
+      FUNCTION.forstårIkkeHandleNett,
+      FUNCTION.reddTrykkeFeil,
+      FUNCTION.ikkeLærtDigitaleVerktøy,
+      FUNCTION.forstårIkkeKjøperBillett
+    ],
+    bydel: [BYDEL.gamleOslo]
+  },
+  {
+    id: "id:service/strikkegruppe",
+    name: "Strikkegruppe",
+    description:
+      "Et tilbud til deg som ønsker å delta i en gruppe som har håndarbeid som hobby. Vi møtes hver tirsdag i aktivitetsstuen på Seniorsentret på Grønland.",
+    moreInformationURL:
+      "https://www.oslo.kommune.no/natur-kultur-og-fritid/gronland-flerkulturelle-seniorsenter/#gref",
+    treatment: TREATMENT.forebyggende,
+    contexts: [{ name: CONTEXT.skaffeHobby, score: 2 }],
+    functions: [],
+    bydel: [BYDEL.gamleOslo]
+  },
+  {
+    id: "id:service/treningsgruppe",
+    name: "Treningsgruppe",
+    description:
+      "Et tilbud for deg over 60 år som har behov for trening med fokus på styrke og balanse. Gruppen ledes av en dyktig fysioterapeut. /nHerretrening: mandager og fredager fra 09:00 – 10:00/nDametrening: mandager og fredager fra 10:00 – 11:00",
+    moreInformationURL:
+      "https://www.oslo.kommune.no/natur-kultur-og-fritid/gronland-flerkulturelle-seniorsenter/#gref",
+    treatment: TREATMENT.forebyggende,
+    contexts: [
+      { name: CONTEXT.godFysiskForm, score: 2 },
+      { name: CONTEXT.forflytteMegHjemme, score: 2 },
+      { name: CONTEXT.forflytteMegUtenfor, score: 2 }
+    ],
+    functions: [FUNCTION.reddFalle],
+    bydel: [BYDEL.gamleOslo]
+  },
+  {
+    id: "id:service/grønlandFlerkulturelleSeniorsenter",
+    name: "Grønland flerkulturelle seniorsenter",
+    description:
+      "Vi er til for deg over 60 år og holder sentralt til på Grønland. Tilbudet er for deg som har behov eller ønske om å komme seg ut å være sammen med andre. Foruten å være en sosial møteplass tilbys det ulike aktiviteter.",
+    moreInformationURL:
+      "https://www.oslo.kommune.no/natur-kultur-og-fritid/gronland-flerkulturelle-seniorsenter/#gref",
+    treatment: TREATMENT.forebyggende,
+    contexts: [{ name: CONTEXT.treffeFolk, score: 2 }],
+    functions: [],
+    bydel: [BYDEL.gamleOslo]
+  },
+  {
+    id: "id:service/valleAktivitetssenter",
+    name: "Valle Aktivitetssenter",
+    description:
+      "Vi er et lavterskeltilbud uten behandling. Vi er et sosialt møtested med et variert tilbud av aktiviteter (data, internett, håndarbeid, film, musikk, turer og noe fysisk aktivitet). Mandager avholdes det husmøte hvor dere gjester kan bestemme turer og ulike aktiviteter.",
+    moreInformationURL:
+      "https://www.oslo.kommune.no/helse-og-omsorg/psykisk-helse/aktivitetshus/valle-aktivitetssenter/#gref",
+    treatment: TREATMENT.forebyggende,
+    contexts: [
+      { name: CONTEXT.bedrePsykisk, score: 2 },
+      { name: CONTEXT.treffeFolk, score: 2 }
+    ],
+    functions: [
+      FUNCTION.vondeTanker,
+      FUNCTION.indreUro,
+      FUNCTION.psykiskeProblemer
+    ],
+    bydel: [BYDEL.gamleOslo]
+  },
+  {
+    id: "id:service/kafèSvovel",
+    name: "Kafè Svovel",
+    description:
+      "Er du i en livssituasjon hvor du ikke har noe fast å gå til, kan Kafe Svovel være noe for deg. Vi lytter til deg og gir deg støtte, men vi driver ikke behandling. Kafé Svovel er et aktivitetshus hvor du blant annet kan spise lunsj, lese aviser, bruke internett og delta på turer.",
+    moreInformationURL:
+      "https://www.oslo.kommune.no/helse-og-omsorg/psykisk-helse/aktivitetshus/kafe-svovel/",
+    treatment: TREATMENT.forebyggende,
+    contexts: [
+      { name: CONTEXT.bedrePsykisk, score: 2 },
+      { name: CONTEXT.treffeFolk, score: 2 }
+    ],
+    functions: [
+      FUNCTION.vondeTanker,
+      FUNCTION.indreUro,
+      FUNCTION.psykiskeProblemer,
+      FUNCTION.nyBydelen
+    ],
+    bydel: [BYDEL.gamleOslo]
+  },
+  {
+    id: "id:service/kafèJordal",
+    name: "Kafè Jordal",
+    description:
+      "Vi er et uhøytidelig spisested som ligger i Vålerengen/Kampen-området. Kafé Jordal er ikke et behandlingssted, men et sosialt tilbud til folk som sliter med forskjellige psykiske problemer. Hos oss møter du faste medarbeidere. Du kan bruke kafeen etter eget behov: bare spise, prate med oss eller andre gjester, drikke kaffe, lese eller lignende. Vi får skryt av maten vår.",
+    moreInformationURL:
+      "https://www.oslo.kommune.no/helse-og-omsorg/psykisk-helse/aktivitetshus/kafe-jordal/",
+    treatment: TREATMENT.forebyggende,
+    contexts: [
+      { name: CONTEXT.bedrePsykisk, score: 2 },
+      { name: CONTEXT.treffeFolk, score: 2 }
+    ],
+    functions: [
+      FUNCTION.vondeTanker,
+      FUNCTION.indreUro,
+      FUNCTION.psykiskeProblemer
+    ],
+    bydel: [BYDEL.gamleOslo]
+  },
+  {
+    id: "id:service/aktivitetssentret31B",
+    name: "Aktivitetssentret 31B",
+    description:
+      "Aktivitetssenteret 31 B er for deg som har erfaring fra psykiatrien. Stedet er åpent for alle og du trenger ikke henvisning for å gå her. Vi vil vise deg rundt og fortelle deg om stedet. Hvis du vil kan du også ta med venner og familie.↵↵Vi driver ikke behandling eller terapi, men tilbyr et rikt utvalg av aktiviteter.",
+    moreInformationURL:
+      "https://www.oslo.kommune.no/helse-og-omsorg/psykisk-helse/aktivitetshus/aktivitetssenteret-31-b/#gref",
+    treatment: TREATMENT.forebyggende,
+    contexts: [
+      { name: CONTEXT.bedrePsykisk, score: 2 },
+      { name: CONTEXT.treffeFolk, score: 2 }
+    ],
+    functions: [
+      FUNCTION.vondeTanker,
+      FUNCTION.indreUro,
+      FUNCTION.psykiskeProblemer
+    ],
+    bydel: [BYDEL.gamleOslo]
+  },
+  {
+    id: "id:service/aktivitetssentret31B",
+    name: "Aktivitetssentret 31B",
+    description:
+      "Aktivitetssenteret 31 B er for deg som har erfaring fra psykiatrien. Stedet er åpent for alle og du trenger ikke henvisning for å gå her. Vi vil vise deg rundt og fortelle deg om stedet. Hvis du vil kan du også ta med venner og familie.↵↵Vi driver ikke behandling eller terapi, men tilbyr et rikt utvalg av aktiviteter.",
+    moreInformationURL:
+      "https://www.oslo.kommune.no/helse-og-omsorg/psykisk-helse/aktivitetshus/aktivitetssenteret-31-b/#gref",
+    treatment: TREATMENT.forebyggende,
+    contexts: [
+      { name: CONTEXT.bedrePsykisk, score: 2 },
+      { name: CONTEXT.treffeFolk, score: 2 }
+    ],
+    functions: [
+      FUNCTION.vondeTanker,
+      FUNCTION.indreUro,
+      FUNCTION.psykiskeProblemer
+    ],
+    bydel: [BYDEL.gamleOslo]
   }
 ];
