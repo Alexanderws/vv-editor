@@ -3,6 +3,7 @@ import { RouteComponentProps } from "react-router-dom";
 import styled from "styled-components";
 
 import ActionButton from "../components/action-button.component";
+import Chevron from "../icons/chevron.icon";
 
 import { AppContext } from "../contexts/app.context";
 import { ServicesContext } from "../contexts/services.context";
@@ -43,6 +44,12 @@ const Title = styled.h2`
   font-weight: 400;
   margin-bottom: 60px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  :hover {
+    text-decoration: underline;
+  }
 `;
 
 const Description = styled.span`
@@ -296,39 +303,6 @@ const OverviewForm = ({
           ""
         )}
       </FormGroup>
-      {/* <FormGroup>
-        <Label htmlFor="treatment">Tilbudet er primært</Label>
-        <RowContainer style={{ height: "48px" }}>
-          <SegmentedButton
-            value={TREATMENT.kompenserende}
-            type="button"
-            name="treatment"
-            defaultChecked={form.treatment === TREATMENT.kompenserende}
-            onClick={handleInputChange}
-          />
-          <SegmentedButton
-            value={TREATMENT.behandlende}
-            type="button"
-            name="treatment"
-            defaultChecked={form.treatment === TREATMENT.behandlende}
-            onClick={handleInputChange}
-          />
-          <SegmentedButton
-            value={TREATMENT.forebyggende}
-            type="button"
-            name="treatment"
-            defaultChecked={form.treatment === TREATMENT.forebyggende}
-            onClick={handleInputChange}
-          />
-        </RowContainer>
-        {formErrors.treatment ? (
-          <ErrorMessage>
-            Du må angi hva slags type behandling tilbudet gir
-          </ErrorMessage>
-        ) : (
-          ""
-        )}
-      </FormGroup> */}
       <FormGroup>
         <RowContainer>
           <Label style={{ width: "70%" }}>Mål</Label>
@@ -598,7 +572,8 @@ const EditServicePage = (props: EditServiceProps) => {
   return (
     <ColumnContainer>
       <Title onClick={() => history.push("/")}>
-        Tilbake til startsiden       
+        <Chevron direction="left" />
+        <span style={{ marginLeft: "8px" }}>Tilbake til startsiden</span>
       </Title>
       <Description>
         {form.name || isEditing

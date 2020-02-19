@@ -3,6 +3,8 @@ import { RouteComponentProps } from "react-router-dom";
 import styled from "styled-components";
 import Tree from "react-d3-tree";
 
+import Chevron from "../icons/chevron.icon";
+
 import { contexts } from "../store/contexts.data";
 import { functions } from "../store/functions.data";
 import { ServicesContext } from "../contexts/services.context";
@@ -21,6 +23,12 @@ const Title = styled.h2`
   font-weight: 400;
   margin-bottom: 60px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  :hover {
+    text-decoration: underline;
+  }
 `;
 
 const Description = styled.span`
@@ -158,65 +166,11 @@ const TreeVisPage = (props: TreeVisProps) => {
     }
   ]);
 
-  /*  useEffect(() => {
-    setData({
-      name: "Parent",
-      children: [
-        {
-          name: "Child One"
-        },
-        {
-          name: "Child Two",
-          children: [
-            {
-              name: "YOLO",
-              children: [
-                { name: "Komme meg rundt utenfor hjemmet" },
-                { name: "Komme meg rundt i hjemmet" }
-              ]
-            },
-            { name: "DOLO" }
-          ]
-        },
-        {
-          name: "Child Two",
-          children: [{ name: "YOLO" }, { name: "DOLO" }]
-        }
-      ]
-    });
-  }, []); */
-
-  /* useEffect(() => {
-    setData([
-      {
-        name: "Mål",
-        children: contexts.map((conObj: any) => {
-          return {
-            name: conObj.text,
-            children: conObj.hindrances.length
-              ? conObj.hindrances.map((childObj: any) => {
-                  return {
-                    name: childObj,
-                    children: getRankedServices(conObj.id, []).map(
-                      (service: any) => {
-                        return { name: service.name };
-                      }
-                    )
-                  };
-                })
-              : getRankedServices(conObj.id, []).map((service: any) => {
-                  return { name: service.name };
-                })
-          };
-        })
-      }
-    ]);
-  }, []); */
-
   return (
     <ColumnContainer>
       <Title onClick={() => history.push("/")}>
-        Tilbake til startsiden
+        <Chevron direction="left" />
+        <span style={{ marginLeft: "8px" }}>Tilbake til startsiden</span>
       </Title>
       <Description>
         Her ser du en tre-struktur over hvordan mål, hindringer og

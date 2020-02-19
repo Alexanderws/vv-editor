@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import ActionButton from "../components/action-button.component";
 import Card from "../components/card.component";
+import Chevron from "../icons/chevron.icon";
 
 import { Service } from "../store/services.data";
 import { contexts } from "../store/contexts.data";
@@ -36,6 +37,12 @@ const Title = styled.h2`
   font-weight: 400;
   margin-bottom: 60px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  :hover {
+    text-decoration: underline;
+  }
 `;
 
 const Description = styled.span`
@@ -98,8 +105,9 @@ const AllServicesPage = (props: AllServicesProps) => {
 
   return (
     <ColumnContainer>
-      <Title onClick={() => history.goBack()}>
-        Tilbake til startsiden
+      <Title onClick={() => history.push("/")}>
+        <Chevron direction="left" />
+        <span style={{ marginLeft: "8px" }}>Tilbake til startsiden</span>
       </Title>
       <Description>Her ser du en liste over alle tjenester</Description>
       <RowContainer>

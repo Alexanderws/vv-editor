@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import ActionButton from "../components/action-button.component";
 import Card from "../components/card.component";
+import Chevron from "../icons/chevron.icon";
 
 import { Service, bydeler } from "../store/services.data";
 import { contexts } from "../store/contexts.data";
@@ -45,18 +46,18 @@ const RowContainer = styled.div`
   flex-direction: row;
 `;
 
-const InputContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 8px;
-`;
-
 const Title = styled.h2`
   font-size: 1.375rem;
   color: black;
   font-weight: 400;
   margin-bottom: 60px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  :hover {
+    text-decoration: underline;
+  }
 `;
 
 const Description = styled.span`
@@ -272,8 +273,9 @@ const ServiceRankingPage = (props: ServiceRankingProps) => {
 
   return (
     <ColumnContainer>
-      <Title onClick={() => history.goBack()}>
-        Tilbake til startsiden
+      <Title onClick={() => history.push("/")}>
+        <Chevron direction="left" />
+        <span style={{ marginLeft: "8px" }}>Tilbake til startsiden</span>
       </Title>
       <Description>
         Her ser du en rangert liste over tjenestene
