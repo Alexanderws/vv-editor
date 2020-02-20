@@ -30,43 +30,49 @@ const ServicesRankedIcon = (props: IconProps) => {
             id="Rectangle-Copy-3"
             stroke="#000000"
             stroke-width="2"
-            x="10"
-            y="3"
+            x="9"
+            y="4"
             width="19"
-            height="6"
+            height="5"
           ></rect>
-          <circle id="Oval" fill="#000000" cx="5" cy="6" r="2"></circle>
+          <circle
+            id="Oval"
+            fill="#000000"
+            cx="4.5"
+            cy="6.5"
+            r="1.5"
+          ></circle>
           <rect
             id="Rectangle-Copy-4"
             stroke="#000000"
             stroke-width="2"
-            x="10"
+            x="9"
             y="13"
             width="19"
-            height="6"
+            height="5"
           ></rect>
           <circle
             id="Oval-Copy"
             fill="#000000"
-            cx="5"
-            cy="16"
-            r="2"
+            cx="4.5"
+            cy="15.5"
+            r="1.5"
           ></circle>
           <rect
             id="Rectangle-Copy-5"
             stroke="#000000"
             stroke-width="2"
-            x="10"
-            y="23"
+            x="9"
+            y="22"
             width="19"
-            height="6"
+            height="5"
           ></rect>
           <circle
             id="Oval-Copy-2"
             fill="#000000"
-            cx="5"
-            cy="26"
-            r="2"
+            cx="4.5"
+            cy="24.5"
+            r="1.5"
           ></circle>
         </g>
       </svg>
